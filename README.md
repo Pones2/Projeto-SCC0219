@@ -4,7 +4,7 @@ Projeto para a Disciplinha SCC0219 - Introdução ao Desenvolvimento Web<br>
 
 <h3>Integrantes : <br></h3>
 Felipe Seiji Momma Valente - 12543700<br>
-Rodrigo Lima - <br>
+Rodrigo de Freitas Lima - 12547510 <br>
 Ryu - <br>
 <br>
 
