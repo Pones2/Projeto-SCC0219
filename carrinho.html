@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Meu Carrinho - Pet Shop</title>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/carrinho.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<div class="logo">
+				<a href="index.html"><img src="img/logo.png" alt="Logo Pet Shop"></a>
+			</div>
+			<ul>
+				<li><a href="index.html">Início</a></li>
+				<li><a href="produto.html">Produtos</a></li>
+				<li><a href="contato.html">Contato</a></li>
+				<li><a href="carrinho.html">Meu Carrinho</a></li>
+				<li class="right"><a href="cadastro.html">Criar conta</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h1>Meu Carrinho</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Produto</th>
+					<th>Quantidade</th>
+					<th>Preço Unitário</th>
+					<th>Preço Total</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Ração para Cães Adultos - 1Kg</td>
+					<td><input type="number" value="1"></td>
+					<td>R$ 25,00</td>
+					<td>R$ 25,00</td>
+					<td><button class="delete-btn">Excluir</button></td>
+				</tr>
+				<tr>
+					<td>Brinquedo para Gatos</td>
+					<td><input type="number" value="2"></td>
+					<td>R$ 10,00</td>
+					<td>R$ 20,00</td>
+					<td><button class="delete-btn">Excluir</button></td>
+				</tr>
+				<tr>
+					<td colspan="3"></td>
+					<td>R$ 45,00</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="button-wrapper">
+			<button class="button">Finalizar Compra</button>
+		</div>
+	</main>
+	<footer>
+		<p>&copy; 2023 Pet Shop. Todos os direitos reservados.</p>
+	</footer>
+</body>
+</html>
