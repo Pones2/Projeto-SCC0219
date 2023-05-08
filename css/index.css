@@ -7,13 +7,14 @@ main {
 .slideshow-container {
   position: relative;
   margin: auto;
+  margin-bottom: 10px;
 
 }
 
 .slide {
   display: none;
   max-height: 500px;
-  width: 100%;
+  width: 99.1%;
     
 }
 
@@ -44,8 +45,49 @@ main {
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
+  margin-bottom: 20px;
 }
 
 .active, .dot:hover {
   background-color: #717171;
+}
+
+.container{
+  margin-bottom: 50px;
+}
+
+.produtos{
+  text-decoration:none;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: auto;
+}
+
+.welcome{
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome h1{
+  font-size: 40px;
+}
+
+.welcome p{
+  max-width: 80%;
+  margin: 10px auto;
+  font-size: 20px;
+  text-align: justify;
+}
+
+.produtos:hover {
+  background-color: #3e8e41;
+  margin: auto;
+}
+
+#delivery{
+  max-width: 50%;
 }
