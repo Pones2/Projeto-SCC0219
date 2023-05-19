@@ -1,13 +1,25 @@
 .button {
     color: black;
     height: 40px;
+    cursor: pointer;
 }
 
 .dropdownMenu {
     height: 3em;
     width: 3em;
-    cursor: pointer;
     background: transparent;
     border: none !important;
     padding-bottom: 50px;
+}
+
+.dropdownContent {
+    position: relative;
+    top: 2.25em;
+    background-color: rgb(145, 244, 255);
+    min-width: 160px;
+    border: none !important;
+}
+
+.dropdownContent:hover {
+    background-color: rgb(90, 156, 163);
 }

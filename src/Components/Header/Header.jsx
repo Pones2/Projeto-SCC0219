@@ -15,9 +15,9 @@ const Header = () => {
                         <Button> Home </Button>
                         <Button> About </Button>
 
-                        <Dropdown> 
-                            <Button> Home </Button>
-                            <Button> About </Button>
+                        <Dropdown className="dropdown"> 
+                            <Button className={"dropdownContent"}> Home </Button> <br></br>
+                            <Button className={"dropdownContent"}> About </Button>
                         </Dropdown>
                     </ul>
                 </nav>
