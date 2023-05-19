@@ -1,0 +1,13 @@
+.button {
+    color: black;
+    height: 40px;
+}
+
+.dropdownMenu {
+    height: 3em;
+    width: 3em;
+    cursor: pointer;
+    background: transparent;
+    border: none !important;
+    padding-bottom: 50px;
+}

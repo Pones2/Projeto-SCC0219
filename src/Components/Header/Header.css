@@ -1,0 +1,17 @@
+header {
+	background-color: #006699;
+	color: #fff;
+	padding: 10px;
+	height: 6em;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+ul {
+	display: flex;
+	position: relative;
+}
