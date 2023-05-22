@@ -18,6 +18,7 @@ const Header = () => {
                     <ul>
                         <Button onClick={() => navigate("/")}> Home </Button>
                         <Button onClick={() => navigate("/contato")}> Contato </Button>
+                        <Button onClick={() => navigate("/criarconta")}> Criar Conta </Button>
 
                         <Dropdown className="dropdown"> 
                             <Button className={"dropdownContent"}> Home </Button> <br></br>

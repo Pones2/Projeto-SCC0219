@@ -11,9 +11,11 @@ const Contact = () => {
     return (
         <>
             <Header />
-            <Label for="nome"> Nome: </Label> <br></br>
-            <Label for="email"> Email: </Label> <br></br>
-            <Label for="mensagem"> Mensagem: </Label> <br></br>
+            <h2>Entre em contato conosco</h2>
+            <p>Preencha o formulário abaixo para entrar em contato com a nossa loja.</p>
+            <Label id="nome" type="text"> Nome: </Label> <br></br>
+            <Label id="email" type="email"> Email: </Label> <br></br>
+            <Label id="mensagem" type="text"> Mensagem: </Label> <br></br>
             <Button> Enviar mensagem </Button>
             <Footer />
         </>
