@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.css';
-import { Routes, Route} from 'react-router-dom';
+import { Routes, Route, useNavigate} from 'react-router-dom';
 
+import Home from './Pages/Home/Home';
+import Contact from './Pages/Contact/Contact';
 
 import Button from './Components/Button/Button';
 import Header from './Components/Header/Header';
@@ -10,31 +12,20 @@ import Footer from './Components/Footer/Footer';
 const App = () => {
   //const message = 'Hello World';
   const [message, setMessage] = React.useState('Hello World');
+  const navigate = useNavigate();
 
   return (
     <>
     <Routes>
       <Route path="/" exact element = {
         <>
-          <Header />
-          <div className='container'>
-            {message}
-          </div>
-
-          <Button onClick = {() => setMessage("oi")}> oi </Button>
-          <Footer />
+          <Home />
         </>
       }></Route>
 
-      <Route path="/about" element = {
+      <Route path="/contato" element = {
         <>
-        <Header />
-        <div className='container'>
-          {message}
-        </div>
-
-        <Button onClick = {() => setMessage("oi")}> oi mane </Button>
-        <Footer />
+          <Contact />
       </>
       }/>
     </Routes>
