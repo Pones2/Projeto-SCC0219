@@ -6,6 +6,9 @@ import dropdownImg from "./Dropdown.png";
 
 import './Dropdown.css';
 
+// dropdown component.
+// children is the content that will be displayed when the dropdown is clicked
+
 const Dropdown = ({ children }) => {
     const [ display, setDisplay ] = useState( 'none' )
 

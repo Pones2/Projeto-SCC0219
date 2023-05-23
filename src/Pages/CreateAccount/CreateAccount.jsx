@@ -5,6 +5,7 @@ import Header from "../../Components/Header/Header";
 import Label from "../../Components/Label/Label";
 
 import "./CreateAccount.css";
+import Button from "../../Components/Button/Button";
 
 const CreateAccount = () => {
     return (
@@ -17,6 +18,8 @@ const CreateAccount = () => {
             <Label id="confirmarSenha" type="password" required> Confirmar Senha: </Label> <br></br>
             <Label id="telefone" type="tel" required> Telefone: </Label> <br></br>
             <Label id="endereco" type="text" required> Endereço: </Label> <br></br>
+            <Button> Criar Conta </Button>
+            <a href="/login"> Já possui uma conta? </a>
             <Footer />
         </>
     );

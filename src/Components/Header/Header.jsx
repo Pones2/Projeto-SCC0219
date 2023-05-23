@@ -7,6 +7,8 @@ import Dropdown from "../Dropdown/Dropdown";
 
 import "./Header.css";
 
+// header component
+
 const Header = () => {
 
     const navigate = useNavigate();
@@ -19,6 +21,7 @@ const Header = () => {
                         <Button onClick={() => navigate("/")}> Home </Button>
                         <Button onClick={() => navigate("/contato")}> Contato </Button>
                         <Button onClick={() => navigate("/criarconta")}> Criar Conta </Button>
+                        <Button onClick={() => navigate("/login")}> Login </Button>
 
                         <Dropdown className="dropdown"> 
                             <Button className={"dropdownContent"}> Home </Button> <br></br>

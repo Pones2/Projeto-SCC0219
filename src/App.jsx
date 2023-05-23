@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import Contact from './Pages/Contact/Contact';
 import CreateAccount from './Pages/CreateAccount/CreateAccount';
-
+import Login from './Pages/Login/Login';
 
 const App = () => {
   return (
@@ -25,6 +25,11 @@ const App = () => {
       <Route path="/criarconta" element = {
         <>
           <CreateAccount />
+        </>
+      }/>
+      <Route path="/login" element = {
+        <>
+          <Login />
         </>
       }/>
     </Routes>
