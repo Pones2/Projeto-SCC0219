@@ -6,6 +6,7 @@ import Home from './Pages/Home/Home';
 import Contact from './Pages/Contact/Contact';
 import CreateAccount from './Pages/CreateAccount/CreateAccount';
 import Login from './Pages/Login/Login';
+import ProductsPageWrapper from './Pages/Products/Products';
 
 const App = () => {
   return (
@@ -30,6 +31,11 @@ const App = () => {
       <Route path="/login" element = {
         <>
           <Login />
+        </>
+      }/>
+      <Route path="/produtos" element = {
+        <>
+          <ProductsPageWrapper />
         </>
       }/>
     </Routes>
