@@ -1,12 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 
 import "./Filter.css";
 
-import Label from "../Label/Label";
-
 const Filter = (props) => {
+    const [maxPrice, setMaxPrice] = useState(1000);
+
   const handleFilterChange = (event) => {
-    props.onFilterChange(event); // Call the onFilterChange function passed from the parent component
+    const { name, value } = event.target;
+
+    // Update the filter value
+    props.onFilterChange(event);
+
+    // Update the maxPrice if the price input changes
+    if (name === "price") {
+      setMaxPrice(value);
+    }
   };
 
   return (
@@ -29,11 +37,12 @@ const Filter = (props) => {
             name="price"
             min="0"
             max="1000"
-            value={props.filterValues.price}
+            step = "10"
+            value={props.filterValues.price || maxPrice}
             onChange={handleFilterChange}
           />
           <br />
-          <span>R$0 - R$1000</span>
+          <span>R$0 - R${maxPrice}</span> <br></br>
 
           <label htmlFor="type">Tipo:</label>
           <br />

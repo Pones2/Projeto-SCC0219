@@ -20,24 +20,6 @@ const delay = () => {
 const ProductsPage = ({ products }) => {
   const [productList, setProductList] = React.useState([]);
 
-  /*React.useEffect(() => {
-    delay()
-      .then(() => {
-        const initialProductList = products.map((element) => (
-          <ProductDisplay
-            imgSrc={element.imgSrc}
-            name={element.name}
-            description={element.description}
-            price={element.price}
-          />
-        ));
-        setProductList(initialProductList);
-      })
-      .catch((error) => {
-        console.log("ERROR: Failed to fetch the products list.", error);
-      });
-  }, []);*/
-
   const [filterValues, setFilterValues] = useState({
     name: "",
     price: 0,
