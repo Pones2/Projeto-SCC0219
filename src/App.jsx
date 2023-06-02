@@ -7,6 +7,7 @@ import Contact from './Pages/Contact/Contact';
 import CreateAccount from './Pages/CreateAccount/CreateAccount';
 import Login from './Pages/Login/Login';
 import ProductsPageWrapper from './Pages/Products/Products';
+import SingleProduct from './Pages/SingleProduct/SingleProduct';
 
 const App = () => {
   return (
@@ -36,6 +37,11 @@ const App = () => {
       <Route path="/produtos" element = {
         <>
           <ProductsPageWrapper />
+        </>
+      }/>
+      <Route path="/produtos/:id" element = {
+        <>
+          <SingleProduct />
         </>
       }/>
     </Routes>

@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "name": "Product 1",
+        "description": "Description 1",
+        "type": "Type 1",
+        "imgSrc": "https://picsum.photos/200",
+        "price": 100,
+        "quantity": 10,
+        "sold": 2
+    },
+    {
+        "id": "2",
+        "name": "Product 2",
+        "description": "Description 2",
+        "type": "Type 2",
+        "imgSrc": "https://picsum.photos/200",
+        "price": 200,
+        "quantity": 20,
+        "sold": 4
+    },
+    {
+        "id": "3",
+        "name": "Product 3",
+        "description": "Description 3",
+        "type": "Type 3",
+        "imgSrc": "https://picsum.photos/200",
+        "price": 300,
+        "quantity": 30,
+        "sold": 3
+    }
+]

@@ -1,4 +1,5 @@
 import React , { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./Products.css";
 
@@ -6,15 +7,6 @@ import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import ProductDisplay from "../../Components/ProductDisplay/ProductDisplay";
 import Filter from "../../Components/Filter/Filter";
-
-import ProductsData from "../../Data/Products";
-
-// simulate delay
-const delay = () => {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, 100);
-  });
-};
 
 // set an array of <ProductDisplay /> components
 const ProductsPage = ({ products }) => {
@@ -35,12 +27,17 @@ const ProductsPage = ({ products }) => {
   };
 
   useEffect(() => {
-    delay()
-      .then(() => {
-
+    fetch('/ProductsData.json',
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        }
+      }).then(response => response.json()
+      ).then((data) => {
         console.log(filterValues);
 
-        let filteredProducts = products;
+        let filteredProducts = data;
 
         // Filter by name
         if (filterValues.name) {
@@ -64,18 +61,19 @@ const ProductsPage = ({ products }) => {
         }
 
         const filteredProductList = filteredProducts.map((element) => (
-          <ProductDisplay
-            key={element.id}
-            imgSrc={element.imgSrc}
-            name={element.name}
-            description={element.description}
-            price={element.price}
-          />
+          <Link to={`/produtos/${element.id}`} key={element.id} className="productsLink">
+            <ProductDisplay
+              key={element.id}
+              imgSrc={element.imgSrc}
+              name={element.name}
+              description={element.description}
+              price={element.price}
+            />
+          </Link>
         ));
         setProductList(filteredProductList);
-      })
-      .catch((error) => {
-        console.log("ERROR: Failed to fetch the products list.", error);
+      }).catch((error) => {
+        window.alert("ERROR: Failed to fetch the products list. Error = " + error);
       });
   }, [filterValues, products]);
 
@@ -89,10 +87,4 @@ const ProductsPage = ({ products }) => {
   );
 };
 
-// sla pq precisa disso, mas se n tiver n roda
-const ProductsPageWrapper = () => {
-  const products = ProductsData(); // Fetch products data outside the component
-  return <ProductsPage products={products} />;
-};
-
-export default ProductsPageWrapper;
+export default ProductsPage;
