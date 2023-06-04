@@ -8,6 +8,7 @@ import Header from "../../Components/Header/Header";
 
 
 const SingleProduct = () => {
+    // product variables
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
     const [type, setType] = useState("todos");
@@ -18,6 +19,7 @@ const SingleProduct = () => {
     const { id } = useParams();
 
     useEffect(() => {
+        // fetch data
         fetch('/ProductsData.json',
         {
             headers: {
@@ -38,6 +40,7 @@ const SingleProduct = () => {
         });
     }, []);
 
+    // converts to brl currency
     function toCurrency(value)
     {
         return value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});

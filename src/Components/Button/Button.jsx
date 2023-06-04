@@ -7,10 +7,10 @@ import './Button.css';
 // onClick is the function that will be called when the button is clicked
 // className is the class that will be added to the button
 
-const Button = ({children, onClick, className}) => {
+const Button = (props) => {
     return (
-    <button onClick={onClick} className={`button ${className}`}> 
-        {children}
+    <button onClick={props.onClick} className={`button ${props.className}`} type={props.type}> 
+        {props.children}
     </button>);
 }
  

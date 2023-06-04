@@ -15,18 +15,22 @@ const Label = (props) => {
         isRequired = true;
     }
 
+    const handleOnChange = (event) => {
+        props.onChange(event);
+    }
+
     if(isRequired) {
         return (
             <>
-            <label for={props.id}> {props.children} </label> <br></br>
-            <input type={props.type} id={props.id} name={props.id} required></input>
+            <label htmlFor={props.id}> {props.children} </label> <br></br>
+            <input type={props.type} id={props.id} name={props.id} required onChange={handleOnChange}></input>
             </>
         );
     } else {
         return (
             <>
-            <label for={props.id}> {props.children} </label> <br></br>
-            <input type={props.type} id={props.id} name={props.id}></input>
+            <label htmlFor={props.id}> {props.children} </label> <br></br>
+            <input type={props.type} id={props.id} name={props.id} onChange={handleOnChange}></input>
             </>
         );
     }

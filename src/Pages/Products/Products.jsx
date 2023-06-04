@@ -18,6 +18,7 @@ const ProductsPage = ({ products }) => {
     type: "todos",
   });
 
+  // makes the filter work
   const handleFilterChange = (event) => {
     const { name, value } = event.target;
     setFilterValues((prevValues) => ({
@@ -27,6 +28,7 @@ const ProductsPage = ({ products }) => {
   };
 
   useEffect(() => {
+    // fetch data
     fetch('/ProductsData.json',
       {
         headers: {
@@ -60,6 +62,7 @@ const ProductsPage = ({ products }) => {
           );
         }
 
+        // filtered products as a html tag
         const filteredProductList = filteredProducts.map((element) => (
           <Link to={`/produtos/${element.id}`} key={element.id} className="productsLink">
             <ProductDisplay

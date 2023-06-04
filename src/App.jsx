@@ -10,6 +10,12 @@ import ProductsPageWrapper from './Pages/Products/Products';
 import SingleProduct from './Pages/SingleProduct/SingleProduct';
 
 const App = () => {
+  const [login, setLogin] = React.useState("unlogged");
+
+  const GlobalState = {
+    login, setLogin
+  }
+
   return (
     <>
     <Routes>
@@ -31,7 +37,7 @@ const App = () => {
       }/>
       <Route path="/login" element = {
         <>
-          <Login />
+          <Login GlobalState={GlobalState}/>
         </>
       }/>
       <Route path="/produtos" element = {
