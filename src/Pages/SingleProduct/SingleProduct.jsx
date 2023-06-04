@@ -5,9 +5,11 @@ import "./SingleProduct.css";
 
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
+import Button from "../../Components/Button/Button";
 
+const SingleProduct = ({GlobalState}) => {
+    const { cart, setCart } = GlobalState;
 
-const SingleProduct = () => {
     // product variables
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
@@ -40,6 +42,19 @@ const SingleProduct = () => {
         });
     }, []);
 
+    const addToCart = () => {
+        const product = {
+            name: name,
+            price: price,
+            type: type,
+            imgSrc: imgSrc,
+            id: id
+        }
+
+        setCart([...cart, product]);
+        console.log(cart);
+    }
+
     // converts to brl currency
     function toCurrency(value)
     {
@@ -55,6 +70,7 @@ const SingleProduct = () => {
             <h3> {type} </h3>
             <p> {description} </p>
             <p> Quantidade: {quantity} </p>
+            <Button onClick={addToCart}> Adicionar ao Carrinho </Button>
             <Footer />
         </>
     );

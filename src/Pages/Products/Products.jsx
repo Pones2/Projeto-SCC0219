@@ -8,10 +8,10 @@ import Header from "../../Components/Header/Header";
 import ProductDisplay from "../../Components/ProductDisplay/ProductDisplay";
 import Filter from "../../Components/Filter/Filter";
 
-// set an array of <ProductDisplay /> components
 const ProductsPage = ({ products }) => {
   const [productList, setProductList] = React.useState([]);
 
+  // array of all filter values
   const [filterValues, setFilterValues] = useState({
     name: "",
     price: 0,

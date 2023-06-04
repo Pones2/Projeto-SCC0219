@@ -2,18 +2,24 @@ import React from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
+// pages
 import Home from './Pages/Home/Home';
 import Contact from './Pages/Contact/Contact';
 import CreateAccount from './Pages/CreateAccount/CreateAccount';
 import Login from './Pages/Login/Login';
 import ProductsPageWrapper from './Pages/Products/Products';
 import SingleProduct from './Pages/SingleProduct/SingleProduct';
+import ShoppingCart from './Pages/ShoppingCart/ShoppingCart';
 
 const App = () => {
+  // global variables
   const [login, setLogin] = React.useState("unlogged");
+  const [cart, setCart] = React.useState([]);
 
+  // global state
   const GlobalState = {
-    login, setLogin
+    login, setLogin,
+    cart, setCart
   }
 
   return (
@@ -47,7 +53,12 @@ const App = () => {
       }/>
       <Route path="/produtos/:id" element = {
         <>
-          <SingleProduct />
+          <SingleProduct GlobalState={GlobalState}/>
+        </>
+      }/>
+      <Route path="/carrinho" element = {
+        <>
+          <ShoppingCart GlobalState={GlobalState}/>
         </>
       }/>
     </Routes>

@@ -17,12 +17,12 @@ const Filter = (props) => {
     }
   };
 
+  // the input can be changed to the Label component, but to avoid errors it will stay this way for now
   return (
     <>
       <div className="container-filter">
         <form>
           <p>Produto:</p>
-          {/* Add value and onChange props to the input element */}
           <input
             type="text"
             id="name"
@@ -46,7 +46,6 @@ const Filter = (props) => {
 
           <label htmlFor="type">Tipo:</label>
           <br />
-          {/* Add value and onChange props to the select element */}
           <select
             id="type"
             name="type"

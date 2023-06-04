@@ -25,6 +25,7 @@ const CreateAccount = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        // password does not coincide
         if(password !== confirmPassword)
         {
             setPasswordError("As senhas não coincidem.");
