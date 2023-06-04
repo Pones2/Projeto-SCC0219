@@ -1,18 +1,26 @@
 [
     {
-    "email": "user1@example.com",
-    "password": "password1",
-    "admin": true
+        "email": "user1@example.com",
+        "password": "password1",
+        "admin": true,
+        "name": "John Doe",
+        "address": "123 Main St",
+        "phone": "123-456-7890"
     },
     {
-    "email": "user2@example.com",
-    "password": "password2",
-    "admin": true
-    
+        "email": "user2@example.com",
+        "password": "password2",
+        "admin": true,
+        "name": "Jane Doe",
+        "address": "456 Main St",
+        "phone": "444-888-9999"
     },
     {
-    "email": "user3@example.com",
-    "password": "password3",
-    "admin": false
+        "email": "user3@example.com",
+        "password": "password3",
+        "admin": false,
+        "name": "John Smith",
+        "address": "789 Main St",
+        "phone": "333-444-1111"
     }
 ]
