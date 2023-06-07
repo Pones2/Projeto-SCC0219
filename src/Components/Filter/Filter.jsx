@@ -21,7 +21,7 @@ const Filter = (props) => {
   return (
     <>
       <div className="container-filter">
-        <form>
+        <form id="class">
           <p>Produto:</p>
           <input
             type="text"

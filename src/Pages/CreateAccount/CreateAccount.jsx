@@ -88,8 +88,8 @@ const CreateAccount = () => {
         <>
             <Header />
             <h1>Criar Conta</h1>
-            <form onSubmit={handleSubmit}>
-                <Label id="nome" type="text" required onChange={handleNameChange}> Nome completo: </Label> <br></br>
+            <form onSubmit={handleSubmit} id="formCadastro">
+                <Label id="nome" type="text" required onChange={handleNameChange} > Nome completo: </Label> <br></br>
                 <Label id="email" type="email" required onChange={handleEmailChange}> Email: </Label> <br></br>
                 <Label id="senha" type="password" required onChange={handlePasswordChange}> Senha: </Label> <br></br>
                 <Label id="confirmarSenha" type="password" required onChange={handleConfirmPasswordChange}> Confirmar Senha: </Label> <br></br>
@@ -97,8 +97,9 @@ const CreateAccount = () => {
                 <Label id="endereco" type="text" required onChange={handleAddressChange}> Endereço: </Label> <br></br>
                 <Button> Criar Conta </Button>
                 {passwordError}
+                <a href="/login"> Já possui uma conta? </a>
             </form>
-            <a href="/login"> Já possui uma conta? </a>
+            
             <Footer />
         </>
     );

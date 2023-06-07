@@ -17,18 +17,22 @@ const Header = () => {
         <>
             <header>
                 <nav>
-                    <ul>
-                        <Button onClick={() => navigate("/")}> Home </Button>
-                        <Button onClick={() => navigate("/contato")}> Contato </Button>
-                        <Button onClick={() => navigate("/criarconta")}> Criar Conta </Button>
-                        <Button onClick={() => navigate("/login")}> Login </Button>
-                        <Button onClick={() => navigate("/produtos")}> Produtos </Button>
-                        <Button onClick={() => navigate("/carrinho")}> Carrinho </Button>
+                    
+                        <div class="logo">
+                            <a onClick={() => navigate("/")}><img src="https://files.catbox.moe/cjmq4l.png" alt="Logo Pet Shop"></img></a>
+                        </div>
+                        <ul>
+                        <a onClick={() => navigate("/")}> Home </a>
+                        <a onClick={() => navigate("/contato")}> Contato </a>
+                        <a onClick={() => navigate("/criarconta")}> Criar Conta </a>
+                        <a onClick={() => navigate("/login")}> Login </a>
+                        <a onClick={() => navigate("/produtos")}> Produtos </a>
+                        <a onClick={() => navigate("/carrinho")}> Carrinho </a>
 
-                        <Dropdown className="dropdown"> 
+                        {/* <Dropdown className="dropdown"> 
                             <Button className={"dropdownContent"}> Home </Button> <br></br>
                             <Button className={"dropdownContent"}> About </Button>
-                        </Dropdown>
+                        </Dropdown> */}
                     </ul>
                 </nav>
             </header>

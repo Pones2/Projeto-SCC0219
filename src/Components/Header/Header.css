@@ -1,25 +1,30 @@
 header {
-	background-color: #006699;
-	color: #fff;
+	background-color: rgb(145, 242, 229);
+	color: black;
 	padding: 10px;
-	height: 6em;
-	position: relative;
+}
+
+ul a:hover {
+	background-color: rgb(125, 207, 196);
+	border-radius: 20px;
+	cursor: pointer;
 }
 
 nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	position: absolute;
-	top: 30%;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.logo img {
+	width: 100px;
+	border-radius: 30px;
 }
 
+.logo img:hover {
+	filter: brightness(75%);
+	cursor: pointer;
+}
 
 nav ul {
 	list-style: none;
@@ -30,4 +35,30 @@ nav ul {
 
 nav li {
 	margin-left: 20px;
+}
+
+nav a {
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 6px;
+
+}
+
+/* base */ 
+body {
+    font-family: Arial, sans-serif;
+	background-color: white;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+  
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

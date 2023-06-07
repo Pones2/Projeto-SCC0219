@@ -11,7 +11,7 @@ import Button from '../../Components/Button/Button';
 
 const Home = () => {
     //test variable, remove later
-    const [message, setMessage] = React.useState('Hello World');
+    const [message, setMessage] = React.useState('Hellao World');
     
     const navigate = useNavigate();
 
