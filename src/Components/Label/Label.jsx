@@ -19,21 +19,12 @@ const Label = (props) => {
         props.onChange(event);
     }
 
-    if(isRequired) {
-        return (
-            <>
+    return(
+        <>
             <label htmlFor={props.id}> {props.children} </label> <br></br>
-            <input type={props.type} id={props.id} name={props.id} required onChange={handleOnChange}></input>
-            </>
-        );
-    } else {
-        return (
-            <>
-            <label htmlFor={props.id}> {props.children} </label> <br></br>
-            <input type={props.type} id={props.id} name={props.id} onChange={handleOnChange}></input>
-            </>
-        );
-    }
+            <input type={props.type} id={props.id} name={props.id} required={isRequired} onChange={handleOnChange} placeholder={props.placeholder}></input>
+        </>
+    );
 }
 
 export default Label;

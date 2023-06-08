@@ -4,7 +4,7 @@ header {
 	padding: 10px;
 }
 
-ul a:hover {
+.navLink:hover {
 	background-color: rgb(125, 207, 196);
 	border-radius: 20px;
 	cursor: pointer;
@@ -12,7 +12,7 @@ ul a:hover {
 
 nav {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	align-items: center;
 }
 

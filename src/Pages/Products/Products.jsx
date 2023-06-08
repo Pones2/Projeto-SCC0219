@@ -63,7 +63,7 @@ const ProductsPage = ({ products }) => {
         }
 
         // filtered products as a html tag
-        const filteredProductList = filteredProducts.map((element) => (
+        const filteredProductList = filteredProducts.map((element) => (<div class="product">
           <Link to={`/produtos/${element.id}`} key={element.id} className="productsLink">
             <ProductDisplay
               key={element.id}
@@ -72,7 +72,7 @@ const ProductsPage = ({ products }) => {
               description={element.description}
               price={element.price}
             />
-          </Link>
+          </Link></div>
         ));
         setProductList(filteredProductList);
       }).catch((error) => {
@@ -83,8 +83,12 @@ const ProductsPage = ({ products }) => {
   return (
     <>
       <Header />
-      <Filter filterValues={filterValues} onFilterChange={handleFilterChange}/>
-      {productList}
+      <div class="containerProducts">
+          <Filter filterValues={filterValues} onFilterChange={handleFilterChange}/>
+        <div class="products">
+          {productList}
+        </div>
+      </div>
       <Footer />
     </>
   );

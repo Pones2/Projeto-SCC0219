@@ -9,10 +9,16 @@ const ProductDisplay = (props) => {
 
     return (
     <>
-    <   img src={props.imgSrc} alt={props.name} /> <br></br>
-        <p> {props.name} </p> <br></br>
-        <p> {props.description} </p> <br></br>
-        <p> {price} </p> <br></br>
+    <   img src={props.imgSrc} alt={props.name} id={props.name} class="productImage"/>
+        <div id="productList">
+            <div id="productNameDesc">
+                <p id="productName"> {props.name} </p>
+                <p id="productDescription"> {props.description} </p>
+            </div>
+            <div id="productListPrice">
+                <p id="productPrice"> {price} </p>
+            </div>
+        </div>
     </>
     );
 }

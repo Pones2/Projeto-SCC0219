@@ -1,0 +1,75 @@
+/*texto criar conta*/
+#textoContato {
+    text-align: center;
+    margin-top: 2vh;
+    font-size: 5vh;
+}
+
+#formContato p{
+    text-align: center;
+    font-size: 2vh;
+    margin-bottom: 5vh;
+}
+
+/*formulario*/
+#formContato {
+    
+    width: 80vw;
+    margin: 50px auto;
+    margin-bottom: 20vh;
+    padding: 4vh;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#formContato input,
+#formContato textarea,
+#formContato select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5vh;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: rgb(235, 235, 235);
+}
+
+#formContato input:focus,
+#formContato textarea:focus,
+#formContato select:focus {
+    outline: none;
+    background-color: rgb(215, 215, 215);
+
+}
+
+#formContato button {
+    background-color: rgb(210, 165, 250);
+    color: #fff;
+    padding: 10px 20px;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    height: 5vh;
+    border: none;
+    border-radius: 5px;
+    font-size: 2.5vh;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 3px 5px 4px #888888;
+    font-family: Verdana, sans-serif;
+
+    
+}
+
+#formContato button:hover {
+    background-color: rgb(177, 139, 211);
+    
+}

@@ -20,13 +20,15 @@ const Filter = (props) => {
   // the input can be changed to the Label component, but to avoid errors it will stay this way for now
   return (
     <>
-      <div className="container-filter">
+      <div className="filters">
+        <h3>Filtros :</h3>
         <form id="class">
           <p>Produto:</p>
           <input
             type="text"
             id="name"
             name="name"
+            placeholder="Nome do Produto"
             value={props.filterValues.name}
             onChange={handleFilterChange}
           />
@@ -41,11 +43,10 @@ const Filter = (props) => {
             value={props.filterValues.price || maxPrice}
             onChange={handleFilterChange}
           />
-          <br />
-          <span>R$0 - R${maxPrice}</span> <br></br>
+    
+          <span>R$0 - R${maxPrice}</span>
 
-          <label htmlFor="type">Tipo:</label>
-          <br />
+          <p htmlFor="type">Tipo:</p>
           <select
             id="type"
             name="type"
@@ -59,7 +60,7 @@ const Filter = (props) => {
             <option value="medicamento">Medicamentos</option>
           </select>
 
-          <button type="submit">Filtrar</button>
+          {/* <button type="submit">Filtrar</button> */}
         </form>
       </div>
     </>

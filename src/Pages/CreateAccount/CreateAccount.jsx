@@ -87,18 +87,19 @@ const CreateAccount = () => {
     return (
         <>
             <Header />
-            <h1>Criar Conta</h1>
+            <div id="backgroundCadastro">
             <form onSubmit={handleSubmit} id="formCadastro">
-                <Label id="nome" type="text" required onChange={handleNameChange} > Nome completo: </Label> <br></br>
-                <Label id="email" type="email" required onChange={handleEmailChange}> Email: </Label> <br></br>
-                <Label id="senha" type="password" required onChange={handlePasswordChange}> Senha: </Label> <br></br>
-                <Label id="confirmarSenha" type="password" required onChange={handleConfirmPasswordChange}> Confirmar Senha: </Label> <br></br>
-                <Label id="telefone" type="tel" required onChange={handlePhoneChange}> Telefone: </Label> <br></br>
-                <Label id="endereco" type="text" required onChange={handleAddressChange}> Endereço: </Label> <br></br>
+                <h1 id="textoCadastro">Cadastro</h1>
+                <Label id="nome" type="text" required onChange={handleNameChange} placeholder="Nome Completo"> Nome completo: </Label> <br></br>
+                <Label id="email" type="email" required onChange={handleEmailChange} placeholder="E-mail"> Email: </Label> <br></br>
+                <Label id="senha" type="password" required onChange={handlePasswordChange} placeholder="Senha"> Senha: </Label> <br></br>
+                <Label id="confirmarSenha" type="password" required onChange={handleConfirmPasswordChange} placeholder="Confirmar Senha"> Confirmar Senha: </Label> <br></br>
+                <Label id="telefone" type="tel" required onChange={handlePhoneChange} placeholder="Telefone"> Telefone: </Label> <br></br>
+                <Label id="endereco" type="text" required onChange={handleAddressChange} placeholder="Endereço"> Endereço: </Label> <br></br>
                 <Button> Criar Conta </Button>
                 {passwordError}
-                <a href="/login"> Já possui uma conta? </a>
-            </form>
+                <a href="/login" id="jaPossuiConta"> Já possui uma conta? </a>
+            </form></div>
             
             <Footer />
         </>

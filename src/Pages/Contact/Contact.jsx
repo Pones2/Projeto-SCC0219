@@ -54,12 +54,13 @@ const Contact = () => {
     return (
         <>
             <Header />
-            <h2>Entre em contato conosco</h2>
-            <p>Preencha o formulário abaixo para entrar em contato com a nossa loja.</p>
-            <form onSubmit={handleSubmit}>
-                <Label id="nome" type="text" onChange={handleNameChange}> Nome: </Label> <br></br>
-                <Label id="email" type="email" onChange={handleEmailChange}> Email: </Label> <br></br>
-                <Label id="mensagem" type="text" onChange={handleMessageChange}> Mensagem: </Label> <br></br>
+
+            <form onSubmit={handleSubmit} id="formContato">
+                <h2 id="textoContato">Entre em contato conosco</h2>
+                <p>Preencha o formulário abaixo para entrar em contato com a nossa loja.</p>
+                <Label id="nome" type="text" onChange={handleNameChange} placeholder="Nome"> Nome: </Label> <br></br>
+                <Label id="email" type="email" onChange={handleEmailChange} placeholder="E-mail"> Email: </Label> <br></br>
+                <Label id="mensagem" type="text" onChange={handleMessageChange} placeholder="Digite aqui sua mensagem" > Mensagem: </Label> <br></br>
                 <Button> Enviar mensagem </Button>
                 {sentMessage}
             </form>

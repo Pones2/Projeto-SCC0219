@@ -1,0 +1,46 @@
+#cartItems{
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    margin: 5vh auto;
+    padding: 5vw;
+}
+
+#cartHeader{
+    display: flex;
+}
+
+#wholeCart{
+    display: flex;
+    flex-direction: column;
+}
+
+#cartButtons{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5vh;
+    
+}
+
+#cartButtons button {
+    background-color: rgb(210, 165, 250);
+    color: #fff;
+    padding: 10px 20px;
+    margin-left: 3vw;
+    height: 5vh;
+    border: none;
+    border-radius: 10px;
+    font-size: 2vh;
+    font-weight: bold;
+    cursor: pointer;
+    width: 30%;
+    box-shadow: 3px 5px 4px #888888;
+    font-family: Verdana, sans-serif;
+
+}
+
+#cartButtons button:hover {
+    background-color: rgb(177, 139, 211);
+    
+}

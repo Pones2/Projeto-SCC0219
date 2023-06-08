@@ -1,0 +1,96 @@
+#product{
+    background-color: white;
+    width: 80vw;
+    margin: 10vh auto;
+    padding: 7vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    border-radius: 5px;
+    border: 2px solid rgb(177, 177, 177);
+    box-sizing: border-box;
+    box-shadow: -5px 0px 10px rgba(0,0,0,0.2);
+
+}
+
+#productImage{
+    display: flex;
+    justify-content: space-evenly;
+    height: 100%;
+    flex: 1;
+    margin-right: 2%;
+}
+
+#productImage img{
+    border-radius: 10%;
+    width: 20vw;
+}
+
+#productInfo{ 
+    display: flex;
+    justify-content: space-evenly;
+    flex: 2;
+    flex-direction: column;
+}
+
+#productInfoValues{
+    display: flex;
+    flex-direction: row;
+
+}
+
+#productInfoValuesPrice{
+    flex: 1;
+    margin-right: 5%;
+}
+
+#productInfoValuesButton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#productInfoDesc{
+    word-wrap: wrap;
+    word-break:break-all;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#product button {
+    background-color: rgb(210, 165, 250);
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 3vh;
+    height: 5vh;
+    border: none;
+    border-radius: 20px;
+    font-size: 2vh;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 3px 5px 4px #888888;
+    font-family: Verdana, sans-serif;
+
+}
+
+#product button:hover {
+    background-color: rgb(177, 139, 211);
+    
+}
+
+#productInfoName{
+    font-weight: bold;
+    color: black;
+    font-size: 3vh;
+    font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+#productInfoPrice{
+    background-color: #bebebe;
+    color: black;
+    font-size: 3vh;
+    padding: 1vh 3vw;
+    border-radius: 5px;
+}

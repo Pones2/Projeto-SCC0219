@@ -76,13 +76,15 @@ const Login = ( {GlobalState} ) => {
         return (
             <>
                 <Header />
-                <h1>Login</h1>
-                <form onSubmit={handleSubmit}>
-                    <Label id="email" type="email" required onChange = {handleEmailChange}> Email: </Label> <br></br>
-                    <Label id="senha" type="password" required onChange = {handlePasswordChange}> Senha: </Label> <br></br>
+                <div id="backgroundLogin">
+                <form onSubmit={handleSubmit} id ="formLogin">
+                    <h1 id="textoLogin">Login</h1>
+                    <Label id="email" type="email" required onChange = {handleEmailChange} placeholder="E-mail"> Email: </Label> <br></br>
+                    <Label id="senha" type="password" required onChange = {handlePasswordChange} placeholder="Senha">  Senha: </Label> <br></br>
                     <Button type={'submit'}> Entrar </Button>
                 </form>
                 <p>{errorMessage}</p>
+                </div>
                 <Footer />
             </>
         );

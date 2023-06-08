@@ -56,9 +56,25 @@ const ShoppingCart = ({GlobalState}) => {
     return (
         <>
             <Header />
-            {cartItems}
-            <Button onClick={handlePaying}> Pagar </Button>
-            <Button onClick={clearCart}> Esvaziar carrinho </Button>
+            <div id="wholeCart">
+
+                <div id="cartItems">
+                    <div id="cartHeader">
+                        <p>Produto</p>
+                        <p>Preco Unitario</p>
+                        <p>Quantidade</p>
+                        <p>Total</p>
+
+                    </div>
+
+                    {cartItems}
+                </div>
+                <div id="cartButtons">
+                    <Button onClick={clearCart}> Esvaziar carrinho </Button>
+                    <Button onClick={handlePaying}> Pagar </Button>
+                </div>
+            </div>
+            
             <Footer />
         </>
     );

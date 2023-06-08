@@ -64,13 +64,30 @@ const SingleProduct = ({GlobalState}) => {
     return (
         <>
             <Header />
-            <img src={imgSrc} />
-            <h1> {name} </h1>
-            <h2> {toCurrency(price)} </h2>
-            <h3> {type} </h3>
-            <p> {description} </p>
-            <p> Quantidade: {quantity} </p>
-            <Button onClick={addToCart}> Adicionar ao Carrinho </Button>
+            <div id="product">
+                <div id="productImage">
+                    <img src={imgSrc} />
+                
+                </div>
+                <div id="productInfo">
+                    <div id="productInfoValues">
+                        <div id="productInfoValuesPrice">
+                            <h1 id="productInfoName"> {name} </h1>
+                            <p> Quantidade: {quantity} </p>
+                            <h3> {type} </h3>
+                        </div>
+                        <div id="productInfoValuesButton">
+                            <h2 id="productInfoPrice"> {toCurrency(price)} </h2>
+                            <Button onClick={addToCart} id="productButton"> Adicionar ao Carrinho </Button>
+                        </div>
+                    </div>
+                    <div id="productInfoDesc">
+                        <p> {description} </p>
+                    </div>
+                    
+                </div>
+            
+            </div>
             <Footer />
         </>
     );
