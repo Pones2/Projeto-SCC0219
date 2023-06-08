@@ -15,36 +15,31 @@ const ShoppingCart = ({GlobalState}) => {
 
     const [cartItems, setCartItems] = useState([]);
 
-    const countProducts = () => {
-        const counts = {};
-        cart.forEach((product) => {
-          counts[product.id] = (counts[product.id] || 0) + 1;
-        });
-        return counts;
-      };
-
     useEffect(() => {
-        const cartItems = () => {
-            const productCounts = countProducts();
-        
-            return (
-                <>
-                {Object.keys(productCounts).map((productId) => {
-                    const product = cart.find((item) => item.id === productId);
-                    const count = productCounts[productId];
-                    return (
-                        <CartProduct
-                            product={product}
-                            count={count}
-                            GlobalState={GlobalState}
-                        />
-                    );
-                })}
-                </>
-            );
+        const countProducts = () => {
+            const counts = {};
+            cart.forEach((product) => {
+                counts[product.id] = (counts[product.id] || 0) + 1;
+            });
+            return counts;
         };
-        setCartItems(cartItems);
-    }, [cartItems]);
+    
+        const productCounts = countProducts();
+    
+        const newCartItems = Object.keys(productCounts).map((productId) => {
+            const product = cart.find((item) => item.id === productId);
+            const count = productCounts[productId];
+            return (
+                <CartProduct
+                    key={productId}
+                    product={product}
+                    count={count}
+                    GlobalState={GlobalState}
+                />
+            );
+        });
+        setCartItems(newCartItems);
+    }, [GlobalState, cart]);
 
     const handlePaying = () => {
         if (cart.length === 0) {
