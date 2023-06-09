@@ -22,24 +22,28 @@ const SingleProduct = ({GlobalState}) => {
 
     useEffect(() => {
         // fetch data
-        fetch('/ProductsData.json',
-        {
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            }
-        }).then(response => response.json())
-        .then((data) => {
-            const product = data.find((product) => product.id === id);
-            setName(product.name);
-            setPrice(product.price);
-            setType(product.type);
-            setDescription(product.description);
-            setImgSrc(product.imgSrc);
-            setQuantity(product.quantity);
-        }).catch(error => {
-            window.alert("Erro ao carregar o produto. Erro = " + error)
-        });
+        const timer = setTimeout(() => {
+            fetch('/ProductsData.json', {
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                }
+            })
+            .then(response => response.json())
+            .then((data) => {
+                const product = data.find((product) => product.id === id);
+                setName(product.name);
+                setPrice(product.price);
+                setType(product.type);
+                setDescription(product.description);
+                setImgSrc(product.imgSrc);
+                setQuantity(product.quantity);
+            })
+            .catch(error => {
+                window.alert("Erro ao carregar o produto. Erro = " + error)
+            });
+        }, 100);
+        return () => clearTimeout(timer);
     }, []);
 
     const addToCart = () => {

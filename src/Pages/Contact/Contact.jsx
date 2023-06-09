@@ -58,9 +58,9 @@ const Contact = () => {
             <form onSubmit={handleSubmit} id="formContato">
                 <h2 id="textoContato">Entre em contato conosco</h2>
                 <p>Preencha o formulário abaixo para entrar em contato com a nossa loja.</p>
-                <Label id="nome" type="text" onChange={handleNameChange} placeholder="Nome"> Nome: </Label> <br></br>
-                <Label id="email" type="email" onChange={handleEmailChange} placeholder="E-mail"> Email: </Label> <br></br>
-                <Label id="mensagem" type="text" onChange={handleMessageChange} placeholder="Digite aqui sua mensagem" > Mensagem: </Label> <br></br>
+                <Label id="nome" type="text" onChange={handleNameChange} placeholder="Nome" required> Nome: </Label> <br></br>
+                <Label id="email" type="email" onChange={handleEmailChange} placeholder="E-mail" required> Email: </Label> <br></br>
+                <Label id="mensagem" type="text" onChange={handleMessageChange} placeholder="Digite aqui sua mensagem" required> Mensagem: </Label> <br></br>
                 <Button> Enviar mensagem </Button>
                 {sentMessage}
             </form>

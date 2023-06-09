@@ -16,7 +16,9 @@ const Label = (props) => {
     }
 
     const handleOnChange = (event) => {
-        props.onChange(event);
+        if (props.onChange) {
+            props.onChange(event);
+        }
     }
 
     return(

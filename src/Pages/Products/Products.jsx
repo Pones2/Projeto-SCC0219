@@ -29,7 +29,8 @@ const ProductsPage = ({ products }) => {
 
   useEffect(() => {
     // fetch data
-    fetch('/ProductsData.json',
+    const timer = setTimeout(() => {
+      fetch('/ProductsData.json',
       {
         headers: {
           "Content-Type": "application/json",
@@ -77,7 +78,9 @@ const ProductsPage = ({ products }) => {
         setProductList(filteredProductList);
       }).catch((error) => {
         window.alert("ERROR: Failed to fetch the products list. Error = " + error);
-      });
+      })}, 100);
+
+      return () => clearTimeout(timer);
   }, [filterValues, products]);
 
   return (

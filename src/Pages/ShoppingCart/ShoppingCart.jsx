@@ -15,6 +15,8 @@ const ShoppingCart = ({GlobalState}) => {
 
     const [cartItems, setCartItems] = useState([]);
 
+    const [totalPrice, setTotalPrice] = useState(0);
+
     useEffect(() => {
         const countProducts = () => {
             const counts = {};
@@ -25,10 +27,14 @@ const ShoppingCart = ({GlobalState}) => {
         };
     
         const productCounts = countProducts();
+
+        let updatedTotalPrice = 0;
     
         const newCartItems = Object.keys(productCounts).map((productId) => {
             const product = cart.find((item) => item.id === productId);
             const count = productCounts[productId];
+            updatedTotalPrice += product.price * count;
+
             return (
                 <CartProduct
                     key={productId}
@@ -39,6 +45,7 @@ const ShoppingCart = ({GlobalState}) => {
             );
         });
         setCartItems(newCartItems);
+        setTotalPrice(updatedTotalPrice);
     }, [GlobalState, cart]);
 
     const handlePaying = () => {
@@ -51,6 +58,11 @@ const ShoppingCart = ({GlobalState}) => {
 
     const clearCart = () => {
         setCart([]);
+    }
+
+    function toCurrency(value)
+    {
+        return value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     }
 
     return (
@@ -69,6 +81,9 @@ const ShoppingCart = ({GlobalState}) => {
 
                     {cartItems}
                 </div>
+
+                {toCurrency(totalPrice)}
+
                 <div id="cartButtons">
                     <Button onClick={clearCart}> Esvaziar carrinho </Button>
                     <Button onClick={handlePaying}> Pagar </Button>

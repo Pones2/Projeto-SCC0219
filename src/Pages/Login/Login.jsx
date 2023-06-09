@@ -10,7 +10,7 @@ import Label from "../../Components/Label/Label";
 
 const Login = ( {GlobalState} ) => {
     // global login variable
-    const {login, setLogin} = GlobalState;
+    const {login, setLogin, setLoggedUser} = GlobalState;
 
     const navigate = useNavigate();
 
@@ -24,7 +24,8 @@ const Login = ( {GlobalState} ) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        fetch('/Users.json',{
+        const timer = setTimeout(() => {
+            fetch('/Users.json',{
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json"
@@ -39,11 +40,13 @@ const Login = ( {GlobalState} ) => {
                 if(user.admin)
                 {
                     setLogin("admin");
+                    setLoggedUser(user);
                     navigate("/");
                 }
                 else
                 {
                     setLogin("user");
+                    setLoggedUser(user);
                     navigate("/");
                 }
 
@@ -56,7 +59,9 @@ const Login = ( {GlobalState} ) => {
             }
         }).catch(error => {
             window.alert("Erro ao carregar o usuário. Erro = " + error)
-        });
+        })}, 100);
+
+        return () => clearTimeout(timer);
     }
 
     const handleEmailChange = (event) => {

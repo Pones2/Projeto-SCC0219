@@ -28,10 +28,14 @@ const Header = () => {
                         <a class="navLink" onClick={() => navigate("/produtos")}> Produtos </a>
                         <a class="navLink" onClick={() => navigate("/carrinho")}> Carrinho </a>
 
-                        {/* <Dropdown className="dropdown"> 
-                            <Button className={"dropdownContent"}> Home </Button> <br></br>
-                            <Button className={"dropdownContent"}> About </Button>
-                        </Dropdown> */}
+                        <Dropdown className="dropdown"> 
+                            <Button className={"dropdownContent"} onClick={() => navigate("/contato")}> Contato </Button> <br></br>
+                            <Button className={"dropdownContent"} onClick={() => navigate("/criarconta")}> Criar Conta </Button> <br></br>
+                            <Button className={"dropdownContent"} onClick={() => navigate("/login")}> Login </Button> <br></br>
+                            <Button className={"dropdownContent"} onClick={() => navigate("/produtos")}> Produtos </Button> <br></br>
+                            <Button className={"dropdownContent"} onClick={() => navigate("/carrinho")}> Carrinho </Button> <br></br>
+                            <Button className={"dropdownContent"} onClick={() => navigate("/conta")}> Conta </Button> <br></br>
+                        </Dropdown>
                 </nav>
             </header>
         </>

@@ -10,16 +10,22 @@ import Login from './Pages/Login/Login';
 import ProductsPageWrapper from './Pages/Products/Products';
 import SingleProduct from './Pages/SingleProduct/SingleProduct';
 import ShoppingCart from './Pages/ShoppingCart/ShoppingCart';
+import Payment from './Pages/Paying/Paying';
+import Confirmation from './Pages/Confirmation/Confirmation';
+import NotFound from './Pages/NotFound/NotFound';
+import Account from './Pages/Account/Account';
 
 const App = () => {
   // global variables
   const [login, setLogin] = React.useState("unlogged");
   const [cart, setCart] = React.useState([]);
+  const [loggedUser, setLoggedUser] = React.useState({});
 
   // global state
   const GlobalState = {
     login, setLogin,
-    cart, setCart
+    cart, setCart,
+    loggedUser, setLoggedUser
   }
 
   return (
@@ -59,6 +65,26 @@ const App = () => {
       <Route path="/carrinho" element = {
         <>
           <ShoppingCart GlobalState={GlobalState}/>
+        </>
+      }/>
+      <Route path="/pagamento" element = {
+        <>
+          <Payment GlobalState={GlobalState}/>
+        </>
+      }/>
+      <Route path="/confirmacao" element = {
+        <>
+          <Confirmation/>
+        </>
+      }/>
+      <Route path="/conta" element = {
+        <>
+          <Account GlobalState={GlobalState}/>
+        </>
+      }/>
+      <Route path="*" element = {
+        <>
+          <NotFound/>
         </>
       }/>
     </Routes>
