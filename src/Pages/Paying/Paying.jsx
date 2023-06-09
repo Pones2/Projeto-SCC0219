@@ -60,6 +60,19 @@ const Paying = ({GlobalState}) => {
     const handlePaying = (event) => {
         event.preventDefault();
         // send data to server
+        const data = {
+            user: loggedUser,
+            cart: cart,
+            totalPrice: totalPrice,
+            address: address
+        }
+
+        // converts the data to JSON
+        const jsonData = JSON.stringify(data);
+
+        // simulate POST
+        
+        localStorage.setItem(loggedUser.email + cart, jsonData);
 
         // clear carta
         setCart([]);

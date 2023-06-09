@@ -27,8 +27,9 @@ const Contact = () => {
 
         // converts the data to JSON
         const jsonData = JSON.stringify(data);
-
-        console.log(jsonData);
+    
+        // simulate POST
+        localStorage.setItem(email, jsonData);
 
         // note: there is no fetch because there is no backend to receive POST requests
 
