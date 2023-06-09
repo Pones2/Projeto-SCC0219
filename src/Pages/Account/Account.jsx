@@ -35,7 +35,7 @@ const Account = ({GlobalState}) => {
             <>
                 <Header />
                 <p> Bem vindo, usuário {loggedUser.name}! </p>
-                <Button onClick={() => navigate("mudarconta")}> Mudar dados da conta </Button> <br></br>
+                <Button onClick={() => navigate("/editarconta")}> Mudar dados da conta </Button> <br></br>
                 <Button onClick={ handleLogout }> Log out </Button>
                 <Footer />
             </>
@@ -47,7 +47,7 @@ const Account = ({GlobalState}) => {
             <>
                 <Header />
                 <p> Bem vindo, admin {loggedUser.name}! </p>
-                <Button onClick={() => navigate("mudarconta")}> Mudar dados da conta </Button> <br></br>
+                <Button onClick={() => navigate("/editarconta")}> Mudar dados da conta </Button> <br></br>
                 <Button onClick={() => navigate("/adicionarproduto")}> Adicionar Produto </Button> <br></br>
                 <Button onClick={ handleLogout }> Log out </Button>
                 <Footer />

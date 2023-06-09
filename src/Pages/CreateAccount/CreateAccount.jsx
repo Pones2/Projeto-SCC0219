@@ -8,7 +8,9 @@ import Label from "../../Components/Label/Label";
 import "./CreateAccount.css";
 import Button from "../../Components/Button/Button";
 
-const CreateAccount = () => {
+const CreateAccount = ({GlobalState}) => {
+    const { login, setLogin } = GlobalState;
+
     // account variables
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
@@ -111,26 +113,46 @@ const CreateAccount = () => {
         setAddress(event.target.value);
     }
 
-    return (
-        <>
-            <Header />
-            <div id="backgroundCadastro">
-            <form onSubmit={handleSubmit} id="formCadastro">
-                <h1 id="textoCadastro">Cadastro</h1>
-                <Label id="nome" type="text" required onChange={handleNameChange} placeholder="Nome Completo"> Nome completo: </Label> <br></br>
-                <Label id="email" type="email" required onChange={handleEmailChange} placeholder="E-mail"> Email: </Label> <br></br>
-                <Label id="senha" type="password" required onChange={handlePasswordChange} placeholder="Senha"> Senha: </Label> <br></br>
-                <Label id="confirmarSenha" type="password" required onChange={handleConfirmPasswordChange} placeholder="Confirmar Senha"> Confirmar Senha: </Label> <br></br>
-                <Label id="telefone" type="tel" required onChange={handlePhoneChange} placeholder="Telefone"> Telefone: </Label> <br></br>
-                <Label id="endereco" type="text" required onChange={handleAddressChange} placeholder="Endereço"> Endereço: </Label> <br></br>
-                <Button> Criar Conta </Button>
-                {passwordError}
-                <a href="/login" id="jaPossuiConta"> Já possui uma conta? </a>
-            </form></div>
-            
-            <Footer />
-        </>
-    );
+    const handleLogout = () => {
+        setLogin("unlogged");
+        navigate("/");
+    }
+
+    if(login === "unlogged")
+    {
+        return (
+            <>
+                <Header />
+                <div id="backgroundCadastro">
+                <form onSubmit={handleSubmit} id="formCadastro">
+                    <h1 id="textoCadastro">Cadastro</h1>
+                    <Label id="nome" type="text" required onChange={handleNameChange} placeholder="Nome Completo"> Nome completo: </Label> <br></br>
+                    <Label id="email" type="email" required onChange={handleEmailChange} placeholder="E-mail"> Email: </Label> <br></br>
+                    <Label id="senha" type="password" required onChange={handlePasswordChange} placeholder="Senha"> Senha: </Label> <br></br>
+                    <Label id="confirmarSenha" type="password" required onChange={handleConfirmPasswordChange} placeholder="Confirmar Senha"> Confirmar Senha: </Label> <br></br>
+                    <Label id="telefone" type="tel" required onChange={handlePhoneChange} placeholder="Telefone"> Telefone: </Label> <br></br>
+                    <Label id="endereco" type="text" required onChange={handleAddressChange} placeholder="Endereço"> Endereço: </Label> <br></br>
+                    <Button> Criar Conta </Button>
+                    {passwordError}
+                    <a href="/login" id="jaPossuiConta"> Já possui uma conta? </a>
+                </form></div>
+                
+                <Footer />
+            </>
+        );
+    }
+    else
+    {
+        return (
+            <>
+                <Header />
+                <h3> Você já está logado </h3>
+                <Button onClick={handleLogout}> Log Out </Button> <br></br>
+                <Button onClick={() => navigate("/")}> Voltar ao menu principal </Button>
+                <Footer />
+            </>
+        );
+    }
 }
 
 export default CreateAccount;

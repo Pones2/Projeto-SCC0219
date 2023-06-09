@@ -14,6 +14,7 @@ import Payment from './Pages/Paying/Paying';
 import Confirmation from './Pages/Confirmation/Confirmation';
 import NotFound from './Pages/NotFound/NotFound';
 import Account from './Pages/Account/Account';
+import EditAccount from './Pages/EditAccount/EditAccount';
 
 const App = () => {
   // global variables
@@ -44,7 +45,7 @@ const App = () => {
       }/>
       <Route path="/criarconta" element = {
         <>
-          <CreateAccount />
+          <CreateAccount GlobalState={GlobalState}/>
         </>
       }/>
       <Route path="/login" element = {
@@ -80,6 +81,16 @@ const App = () => {
       <Route path="/conta" element = {
         <>
           <Account GlobalState={GlobalState}/>
+        </>
+      }/>
+      <Route path="/conta" element = {
+        <>
+          <Account GlobalState={GlobalState}/>
+        </>
+      }/>
+      <Route path="/editarconta" element = {
+        <>
+          <EditAccount GlobalState={GlobalState}/>
         </>
       }/>
       <Route path="*" element = {

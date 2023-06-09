@@ -1,14 +1,18 @@
 import React, {useState, useEffect} from "react";
 import { Link , useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./SingleProduct.css";
 
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import Button from "../../Components/Button/Button";
+import Label from "../../Components/Label/Label";
 
 const SingleProduct = ({GlobalState}) => {
-    const { cart, setCart } = GlobalState;
+    const { login, cart, setCart } = GlobalState;
+
+    const navigate = useNavigate();
 
     // product variables
     const [name, setName] = useState("");
@@ -17,6 +21,14 @@ const SingleProduct = ({GlobalState}) => {
     const [description, setDescription] = useState("");
     const [imgSrc, setImgSrc] = useState("");
     const [quantity, setQuantity] = useState(0);
+
+    // updated product variables
+    const [updatedName, setUpdatedName] = useState("");
+    const [updatedPrice, setUpdatedPrice] = useState(0);
+    const [updatedType, setUpdatedType] = useState("todos");
+    const [updatedDescription, setUpdatedDescription] = useState("");
+    const [updatedImgSrc, setUpdatedImgSrc] = useState("");
+    const [updatedQuantity, setUpdatedQuantity] = useState(0);
 
     const { id } = useParams();
 
@@ -31,7 +43,9 @@ const SingleProduct = ({GlobalState}) => {
             })
             .then(response => response.json())
             .then((data) => {
+                // finds the product with the id passed in the url
                 const product = data.find((product) => product.id === id);
+
                 setName(product.name);
                 setPrice(product.price);
                 setType(product.type);
@@ -47,6 +61,7 @@ const SingleProduct = ({GlobalState}) => {
     }, []);
 
     const addToCart = () => {
+        // product object
         const product = {
             name: name,
             price: price,
@@ -55,9 +70,74 @@ const SingleProduct = ({GlobalState}) => {
             id: id
         }
 
+        // counts how many products with the same id are in the cart
+        const countProducts = () => {
+            const counts = {};
+            cart.forEach((product) => {
+                counts[product.id] = (counts[product.id] || 0) + 1;
+            });
+            return counts;
+        };
+
+        // if there are more products with the same id than the quantity available
+        if(countProducts()[id] > quantity)
+        {
+            window.alert("Não há mais produtos disponíveis");
+            return;
+        }
+
         setCart([...cart, product]);
-        console.log(cart);
     }
+
+    // form changes 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const product = {
+            // mantem os valores originais caso o admin não altere
+            name: updatedName !== "" ? updatedName : name,
+            price: updatedPrice !== "" ? updatedPrice : price,
+            type: updatedType !== "" ? updatedType : type,
+            description: updatedDescription !== "" ? updatedDescription : description,
+            imgSrc: updatedImgSrc !== "" ? updatedImgSrc : imgSrc,
+            quantity: updatedQuantity !== "" ? updatedQuantity : quantity
+        }
+
+        // convert to JSON
+        const productJSON = JSON.stringify(product);
+
+        // simulate POST
+
+        localStorage.setItem("product: " + name, productJSON);
+
+        // OBS: the product is not updated in the ProductsData.json file, only in the localStorage
+    }
+
+    const handleNameChange = (event) => {
+        setUpdatedName(event.target.value);
+    }
+
+    const handlePriceChange = (event) => {
+        setUpdatedPrice(event.target.value);
+    }
+
+    const handleTypeChange = (event) => {
+        setUpdatedType(event.target.value);
+    }
+
+    const handleDescriptionChange = (event) => {
+        setUpdatedDescription(event.target.value);
+    }
+
+    const handleImgSrcChange = (event) => {
+        setUpdatedImgSrc(event.target.value);
+    }
+
+    const handleQuantityChange = (event) => {
+        setUpdatedQuantity(event.target.value);
+    }
+
+
 
     // converts to brl currency
     function toCurrency(value)
@@ -65,36 +145,81 @@ const SingleProduct = ({GlobalState}) => {
         return value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     }
 
-    return (
-        <>
-            <Header />
-            <div id="product">
-                <div id="productImage">
-                    <img src={imgSrc} />
+    if (login !== "admin")
+    {
+        return (
+            <>
+                <Header />
+                <div id="product">
+                    <div id="productImage">
+                        <img src={imgSrc} />
+                    
+                    </div>
+                    <div id="productInfo">
+                        <div id="productInfoValues">
+                            <div id="productInfoValuesPrice">
+                                <h1 id="productInfoName"> {name} </h1>
+                                <p> Quantidade: {quantity} </p>
+                                <h3> {type} </h3>
+                            </div>
+                            <div id="productInfoValuesButton">
+                                <h2 id="productInfoPrice"> {toCurrency(price)} </h2>
+                                <Button onClick={addToCart} id="productButton"> Adicionar ao Carrinho </Button>
+                            </div>
+                        </div>
+                        <div id="productInfoDesc">
+                            <p> {description} </p>
+                        </div>
+                    </div>
                 
                 </div>
-                <div id="productInfo">
-                    <div id="productInfoValues">
-                        <div id="productInfoValuesPrice">
-                            <h1 id="productInfoName"> {name} </h1>
-                            <p> Quantidade: {quantity} </p>
-                            <h3> {type} </h3>
-                        </div>
-                        <div id="productInfoValuesButton">
-                            <h2 id="productInfoPrice"> {toCurrency(price)} </h2>
-                            <Button onClick={addToCart} id="productButton"> Adicionar ao Carrinho </Button>
-                        </div>
-                    </div>
-                    <div id="productInfoDesc">
-                        <p> {description} </p>
-                    </div>
+                <Footer />
+            </>
+        );
+    }
+    else
+    {
+        return (
+            <>
+                <Header />
+                <div id="product">
+                    <div id="productImage">
+                        <img src={imgSrc} />
                     
+                    </div>
+                    <div id="productInfo">
+                        <div id="productInfoValues">
+                            <div id="productInfoValuesPrice">
+                                <h1 id="productInfoName"> {name} </h1>
+                                <p> Quantidade: {quantity} </p>
+                                <h3> {type} </h3>
+                            </div>
+                            <div id="productInfoValuesButton">
+                                <h2 id="productInfoPrice"> {toCurrency(price)} </h2>
+                                <Button onClick={addToCart} id="productButton"> Adicionar ao Carrinho </Button>
+                            </div>
+                        </div>
+                        <div id="productInfoDesc">
+                            <p> {description} </p>
+                        </div>
+                        
+                    </div>
+
+                    <p> Editar produto: </p> <br></br>
+                        <form onSubmit={handleSubmit}>
+                            <Label onChange={handleNameChange}> Nome </Label>
+                            <Label onChange={handlePriceChange}> Preço </Label>
+                            <Label onChange={handleTypeChange}> Tipo </Label>
+                            <Label onChange={handleDescriptionChange}> Descrição </Label>
+                            <Label onChange={handleImgSrcChange}> Imagem </Label>
+                            <Label onChange={handleQuantityChange}> Quantidade </Label>
+                            <Button> Editar </Button>
+                        </form>
                 </div>
-            
-            </div>
-            <Footer />
-        </>
-    );
+                <Footer />
+            </>
+        );
+    }
 }
 
 export default SingleProduct;
