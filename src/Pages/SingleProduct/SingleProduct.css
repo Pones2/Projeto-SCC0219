@@ -126,13 +126,19 @@
 /*formulario*/
 #formEditProd {
     
-    width: max(20%,200px);
+    width: max(80%,200px);
     margin: 0 0 0 20px;
     padding: max(1vw,20px);
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    @media (max-width:800px) {
+        width: max(20%,170px);
+        margin:0;
+    }
+
 }
+
 
 #formEditProd input,
 #formEditProd textarea,

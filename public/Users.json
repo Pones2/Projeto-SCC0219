@@ -1,16 +1,16 @@
 [
     {
-        "email": "user1@example.com",
-        "password": "password1",
+        "email": "admin@admin.com",
+        "password": "admin",
         "admin": true,
-        "name": "John Doe",
+        "name": "Admin",
         "address": "123 Main St",
         "phone": "123-456-7890"
     },
     {
-        "email": "user2@example.com",
-        "password": "password2",
-        "admin": true,
+        "email": "user@user.com",
+        "password": "user",
+        "admin": false,
         "name": "Jane Doe",
         "address": "456 Main St",
         "phone": "444-888-9999"

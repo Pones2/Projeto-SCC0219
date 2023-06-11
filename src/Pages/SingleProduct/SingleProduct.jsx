@@ -1,3 +1,5 @@
+//since is only cliente side, the delete functionality is not implemented
+
 import React, {useState, useEffect} from "react";
 import { Link , useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -205,7 +207,7 @@ const SingleProduct = ({GlobalState}) => {
                         
                     </div>
 
-                    
+                        <div id="editProduct">
                         <form onSubmit={handleSubmit} id="formEditProd">
                             <p id="textEditProd"> Editar produto: </p> <br></br>
                             <Label onChange={handleNameChange}> Nome </Label>
@@ -216,6 +218,8 @@ const SingleProduct = ({GlobalState}) => {
                             <Label onChange={handleQuantityChange}> Quantidade </Label>
                             <Button> Editar </Button>
                         </form>
+                        <Button> Deletar </Button>
+                        </div>
                 </div>
                 <Footer />
             </>
