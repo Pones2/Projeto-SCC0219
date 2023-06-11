@@ -8,8 +8,11 @@ import Label from "../../Components/Label/Label";
 import "./CreateAccount.css";
 import Button from "../../Components/Button/Button";
 
+import {useEffect} from 'react';
+
 const CreateAccount = ({GlobalState}) => {
     const { login, setLogin } = GlobalState;
+
 
     // account variables
     const [name, setName] = React.useState("");
@@ -117,6 +120,12 @@ const CreateAccount = ({GlobalState}) => {
         setLogin("unlogged");
         navigate("/");
     }
+
+    useEffect(() => {
+        if(login !== "unlogged"){
+            navigate('/conta')
+        }
+      });
 
     if(login === "unlogged")
     {

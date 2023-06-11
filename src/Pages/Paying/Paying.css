@@ -1,0 +1,75 @@
+#paymentForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20vh;
+    margin-bottom: 50vh;
+    background-color: rgb(145, 242, 229);
+    width: 50vw;
+    padding: max(5vh,50px);
+    border-radius: 30px;
+    font-family: 'Berlin Sans FB Demi', sans-serif;
+    font-size: max(3vh,30px);
+    color: rgb(51, 51, 51);
+    
+}
+
+
+
+#paymentPage{
+    padding: max(10vh,50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (max-width:800px) {
+        padding: min(10vw,10px);
+    }
+}
+
+#paymentPage img{
+    margin-left: 10px;
+    @media (max-width:800px) {
+        display:none;
+    }
+}
+
+#paymentForm button {
+    background-color: rgb(210, 165, 250);
+    color: #fff;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    height: 5vh;
+    border: none;
+    border-radius: 5px;
+    font-size: 2.5vh;
+    font-weight: bold;
+    cursor: pointer;
+    width: 50%;
+    box-shadow: 3px 5px 4px #888888;
+    font-family: Verdana, sans-serif;
+
+}
+
+#paymentForm button:hover {
+    background-color: rgb(177, 139, 211);
+    
+}
+
+#paymentForm input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 3vh;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: rgb(235, 235, 235);
+    max-width: max(300px,50%);
+}
+
+#paymentForm input:focus {
+    outline: none;
+    background-color: rgb(215, 215, 215);
+
+}

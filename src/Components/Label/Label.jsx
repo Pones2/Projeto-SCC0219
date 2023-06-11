@@ -10,9 +10,16 @@ import "./Label.css";
 
 const Label = (props) => {
     let isRequired = false;
+    let InputTag;
 
     if(props.required !== undefined) {
         isRequired = true;
+    }
+
+    if(props.type === "textarea"){
+        InputTag = "textarea";
+    }else{
+        InputTag = "input";
     }
 
     const handleOnChange = (event) => {
@@ -24,8 +31,10 @@ const Label = (props) => {
     return(
         <>
             <label htmlFor={props.id}> {props.children} </label> <br></br>
-            <input type={props.type} id={props.id} name={props.id} required={isRequired} onChange={handleOnChange} placeholder={props.placeholder}></input>
+            <InputTag type={props.type} id={props.id} name={props.id} required={isRequired} onChange={handleOnChange} placeholder={props.placeholder}></InputTag>
         </>
+
+
     );
 }
 

@@ -13,9 +13,14 @@ const NotFound = () => {
     return (
         <>  
             <Header />
-            <h1>404</h1>
-            <h2> Nenhuma página aqui </h2>
-            <Button onClick={() => navifate("/")}> Retornar para o menu principal </Button>
+            <div id="background404">
+                <div id="div404">
+                    <h1>404</h1>
+                    <h3> Nenhuma página aqui </h3>
+                    <Button onClick={() => navifate("/")}> Retornar para o menu principal </Button>
+                </div>
+                <div></div>
+            </div>
             <Footer />
         </>
     );

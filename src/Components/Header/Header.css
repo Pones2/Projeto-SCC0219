@@ -2,6 +2,7 @@ header {
 	background-color: rgb(145, 242, 229);
 	color: black;
 	padding: 10px;
+	width: 98.9%; 
 }
 
 .navLink:hover {
@@ -12,8 +13,13 @@ header {
 
 nav {
 	display: flex;
-	justify-content: space-evenly;
+	/* justify-content: space-evenly; */
 	align-items: center;
+
+	justify-content: space-between;
+	padding: 0 max(100px,6%);
+
+	
 }
 
 .logo img {
@@ -44,6 +50,10 @@ nav a {
 	font-size: 18px;
 	padding: 6px;
 
+}
+
+.dropdown{
+	position: absolute;
 }
 
 /* base */ 

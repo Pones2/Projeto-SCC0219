@@ -85,7 +85,9 @@ const AddProduct = ({GlobalState}) => {
         return (
             <>
                 <Header />
-                    <p> Você não tem permissão para acessar esta página! </p>
+                    <div id="acessDenied">
+                        <p> Você não tem permissão para acessar esta página! </p>
+                    </div>
                 <Footer />
             </>
         );
@@ -95,17 +97,20 @@ const AddProduct = ({GlobalState}) => {
         return (
             <>
                 <Header />
-                    <h1> Adicionar produto </h1>
-                    <form onSubmit={handleSubmit}>
-                        <Label required onChange={handleIdChange}> Id: </Label>
-                        <Label required onChange={handleNameChange}> Nome do produto: </Label>
-                        <Label required onChange={handleDescriptionChange}> Descrição: </Label>
-                        <Label required onChange={handleTypeChange}> Tipo: </Label>
-                        <Label required onChange={handleImgSrcChange}> Fonte da imagem: </Label>
-                        <Label required onChange={handlePriceChange}> Preço: </Label>
-                        <Label required onChange={handleQuantityChange}> Quantidade: </Label>
+                <div id="backgroundAddProd">
+                    
+                    <form onSubmit={handleSubmit} id="formAddProd">
+                        <h1 id="textoAddProd"> Adicionar produto </h1>
+                        <Label required onChange={handleIdChange} placeholder="ID do produto"> ID: </Label>
+                        <Label required onChange={handleNameChange} placeholder="Nome do produto"> Nome do produto: </Label>
+                        <Label required onChange={handleDescriptionChange} placeholder="Descrição do produto"> Descrição: </Label>
+                        <Label required onChange={handleTypeChange} placeholder="Tipo do produto"> Tipo: </Label>
+                        <Label required onChange={handleImgSrcChange} placeholder="Imagem do produto"> Fonte da imagem: </Label>
+                        <Label required onChange={handlePriceChange} placeholder="Preço do produto"> Preço: </Label>
+                        <Label required onChange={handleQuantityChange} placeholder="Quantidade do Produto"> Quantidade: </Label>
                         <Button> Adicionar produto </Button>
                     </form>
+                </div>
                     {confirmMessage}
                 <Footer />
             </>

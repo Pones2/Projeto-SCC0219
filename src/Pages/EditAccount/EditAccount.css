@@ -1,0 +1,73 @@
+/*texto criar conta*/
+#textoEdit {
+    text-align: center;
+    color: black;
+    margin-bottom: 5vh;
+    margin-top: 2vh;
+    font-size: 5vh;
+}
+
+#backgroundEdit{
+    background-image: url(../../Assets/bgMud.png);
+    background-repeat: no-repeat;
+    background-position:bottom;
+    display: flex;
+    margin-bottom: 5vh;
+}
+
+/*formulario*/
+#formEdit {
+    
+    width: 50vw;
+    margin: 50px auto;
+    margin-bottom: 20vh;
+    padding: 4vh;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+
+#formEdit input,
+#formEdit textarea,
+#formEdit select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 3vh;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: rgb(235, 235, 235);
+}
+
+#formEdit input:focus,
+#formEdit textarea:focus,
+#formEdit select:focus {
+    outline: none;
+    background-color: rgb(215, 215, 215);
+
+}
+
+#formEdit button {
+    background-color: rgb(210, 165, 250);
+    color: #fff;
+    padding: 0;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    height: 5vh;
+    border: none;
+    border-radius: 5px;
+    font-size: 2.5vh;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 3px 5px 4px #888888;
+    font-family: Verdana, sans-serif;
+
+}
+
+#formEdit button:hover {
+    background-color: rgb(177, 139, 211);
+    
+}

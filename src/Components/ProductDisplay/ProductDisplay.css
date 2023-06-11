@@ -11,6 +11,9 @@
     word-wrap: wrap;
     word-break: break-all;
     color: #4d4d4d;
+    @media (max-width:800px) {
+        font-size: max(2vh,5px);
+    }
 }
 
 #productPrice{

@@ -12,7 +12,9 @@
     border: 2px solid rgb(177, 177, 177);
     box-sizing: border-box;
     box-shadow: -5px 0px 10px rgba(0,0,0,0.2);
-
+    @media (max-width:800px) {
+        flex-direction : column;
+    }
 }
 
 #productImage{
@@ -26,6 +28,9 @@
 #productImage img{
     border-radius: 10%;
     width: 20vw;
+    @media (max-width:800px) {
+        width: max(200px,20vw);
+    }
 }
 
 #productInfo{ 
@@ -33,11 +38,15 @@
     justify-content: space-evenly;
     flex: 2;
     flex-direction: column;
+    
 }
 
 #productInfoValues{
     display: flex;
     flex-direction: row;
+    @media (max-width:800px) {
+        flex-direction : column;
+    }
 
 }
 
@@ -72,6 +81,9 @@
     width: 100%;
     box-shadow: 3px 5px 4px #888888;
     font-family: Verdana, sans-serif;
+    @media (max-width:800px) {
+        height: max(60px,10vw);
+    }
 
 }
 
@@ -93,4 +105,52 @@
     font-size: 3vh;
     padding: 1vh 3vw;
     border-radius: 5px;
+}
+
+#textEditProd {
+    text-align: center;
+    color: black;
+    margin-bottom: 2vh;
+    margin-top: 1vh;
+    font-size: 3vh;
+}
+
+#backgroundLogin{
+    background-image: url(../../Assets/bgLogCad.png);
+    background-repeat: no-repeat;
+    background-position:bottom;
+    display: flex;
+    margin-bottom: 5vh;
+}
+
+/*formulario*/
+#formEditProd {
+    
+    width: max(20%,200px);
+    margin: 0 0 0 20px;
+    padding: max(1vw,20px);
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+#formEditProd input,
+#formEditProd textarea,
+#formEditProd select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1vh;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: rgb(235, 235, 235);
+}
+
+#formEditProd input:focus,
+#formEditProd textarea:focus,
+#formEditProd select:focus {
+    outline: none;
+    background-color: rgb(215, 215, 215);
+
 }

@@ -1,19 +1,51 @@
+@import url('https://fonts.cdnfonts.com/css/berlin-sans-fb-demi');
+
 #cartItems{
-    background-color: grey;
+    background-color: rgb(223, 223, 223);
     display: flex;
     flex-direction: column;
     width: 80vw;
     margin: 5vh auto;
     padding: 5vw;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+
 }
 
 #cartHeader{
     display: flex;
+    justify-content: space-around ;
+    align-items: center;
+    text-align: center;
+    font-family: 'Berlin Sans FB Demi', sans-serif;
+    font-size: max(20px,2vh);
+    color: #2b2b2b;
+    @media (max-width:800px) {
+        font-size: max(10px,2vh);
+    }
+}
+
+#cartHeader p{
+    width: max(10vw,100px);
+    
+    
+}
+
+#nomeProdutoHeader{
+    text-align: start;
+}
+
+#imgProdutoHeader{
+    @media (max-width:800px) {
+        display:none;
+    }
 }
 
 #wholeCart{
     display: flex;
     flex-direction: column;
+    
+    
 }
 
 #cartButtons{
@@ -21,6 +53,25 @@
     justify-content: center;
     margin-bottom: 5vh;
     
+}
+
+
+#cartTotalPrice{
+    display: flex;
+    justify-content: space-around;
+}
+
+#cartTotalPrice p{
+    width: max(10vw,100px);
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Berlin Sans FB Demi', sans-serif;
+    font-size: max(30px,3vh);
+    
+    @media (max-width:800px) {
+        font-size: max(20px,3vh);
+    }
+
 }
 
 #cartButtons button {
@@ -37,6 +88,10 @@
     width: 30%;
     box-shadow: 3px 5px 4px #888888;
     font-family: Verdana, sans-serif;
+    @media (max-width:800px) {
+        height: 50px;
+        padding : 0;
+    }
 
 }
 

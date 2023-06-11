@@ -13,8 +13,10 @@ const Confirmation = () => {
     return (
         <>
             <Header />
-            <h3> Pagamento confirmado! </h3>
-            <Button onClick={() => navigate("/")}> Retornar para o menu principal </Button>
+            <div id="bgSuccess">
+                <h1> Pagamento confirmado! </h1>
+                <Button onClick={() => navigate("/")}> Retornar para o menu principal </Button>
+            </div>
             <Footer />
         </>
     );

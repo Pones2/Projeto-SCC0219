@@ -4,5 +4,6 @@ footer {
 	text-align: center;
 	left: 0;
 	bottom: 0;
-	width: 98vw;
+	width: 98.05vw;
+	vertical-align: baseline;
 }

@@ -18,6 +18,8 @@ const Home = () => {
     return (
         <>
           <Header />
+
+
           <div className='container'>
             {message}
           </div>

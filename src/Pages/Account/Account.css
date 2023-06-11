@@ -1,0 +1,54 @@
+@import url('https://fonts.cdnfonts.com/css/berlin-sans-fb-demi');
+
+#divConta{
+    background-color: #FF7F27;
+    padding: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+    margin: 10vh 0 max(50vh,300px) 0;
+    border-radius: 40px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    
+}
+
+#divContaBg{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-image: url(../../Assets/bgMud.png);
+    background-repeat: no-repeat;
+    background-position:bottom;
+    
+}
+
+#divConta p{
+    font-size: min(4vh,50px);
+    font-family: 'Berlin Sans FB Demi', sans-serif;
+    color: white;
+}
+
+#divConta button {
+    background-color: #7DCFC4 ;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 3vh;
+    height: 5vh;
+    border: none;
+    border-radius: 5px;
+    font-size: 2.5vh;
+    font-weight: bold;
+    cursor: pointer;
+
+    width: max(50%,300px);
+    padding: 0;
+    box-shadow: 6px 10px 8px rgba(0,0,0,0.2);
+    font-family: Verdana, sans-serif;
+
+}
+
+#divConta button:hover {
+    background-color: #61a199;
+    
+}

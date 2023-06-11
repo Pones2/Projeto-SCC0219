@@ -1,5 +1,40 @@
 #cartOneItem{
-    background-color: green;
-    margin-bottom: 2vh;
     display: flex;
+
+    padding-top: max(5vh,50px);
+    padding-bottom: max(5vh,50px);
+    justify-content: space-around ;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    outline-style: solid;
+    margin-bottom: 3px;
+    outline-color: black;
+
+    @media (max-width:800px) {
+        font-size: max(10px,2vh);
+        width: 100%;
+    }
+
+}
+
+#cartOneItem p{
+    width: max(10vw,100px);
+    margin: 0 5px 0 5px;
+    
+    
+}
+
+#prodNameCart{
+    text-align: start;
+}
+
+#cartOneItem img{
+    max-width: max(10vw,100px);
+    margin: 0;
+    border-radius: 10px;
+
+    @media (max-width:800px) {
+        display:none;
+    }
 }

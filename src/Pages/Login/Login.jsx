@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {useEffect} from 'react';
 
 import "./Login.css";
 
@@ -9,6 +10,8 @@ import Header from "../../Components/Header/Header";
 import Label from "../../Components/Label/Label";
 
 const Login = ( {GlobalState} ) => {
+
+
     // global login variable
     const {login, setLogin, setLoggedUser} = GlobalState;
 
@@ -76,6 +79,18 @@ const Login = ( {GlobalState} ) => {
         setLogin("unlogged");
     }
 
+    useEffect(() => {
+        if(login !== "unlogged"){
+            navigate('/conta')
+        }
+      });
+
+
+
+    if(login !== "unlogged"){
+        // window.location.replace('/conta');
+    }
+
     if(login === "unlogged")
     {
         return (
@@ -87,8 +102,9 @@ const Login = ( {GlobalState} ) => {
                     <Label id="email" type="email" required onChange = {handleEmailChange} placeholder="E-mail"> Email: </Label> <br></br>
                     <Label id="senha" type="password" required onChange = {handlePasswordChange} placeholder="Senha">  Senha: </Label> <br></br>
                     <Button type={'submit'}> Entrar </Button>
+                    <p>{errorMessage}</p>
                 </form>
-                <p>{errorMessage}</p>
+                
                 </div>
                 <Footer />
             </>
@@ -96,7 +112,7 @@ const Login = ( {GlobalState} ) => {
     }
     else
     {
-        return (
+        return ( //<><p>Redirecionando...</p> </>
             <>
                 <Header />
                 <h1>Login</h1>

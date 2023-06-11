@@ -17,7 +17,7 @@
     },
     {
         "email": "user3@example.com",
-        "password": "password3",
+        "password": "1",
         "admin": false,
         "name": "John Smith",
         "address": "789 Main St",

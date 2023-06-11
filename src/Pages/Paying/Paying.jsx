@@ -113,13 +113,16 @@ const Paying = ({GlobalState}) => {
         return (
             <>
                 <Header/>
-                {toCurrency(totalPrice)}
-                {cartItems}
-                <form onSubmit={handlePaying}>
-                    <Label id = "credit-card" required> Cartão de crédito: </Label>
-                    <p> Entregar para: {address} </p>
-                    <Button> Pagar </Button>
-                </form>
+                <div id="paymentPage">
+                
+                    {cartItems}
+                    <form onSubmit={handlePaying} id="paymentForm">
+                        <p id="precoTotalPayment">Preço Total : {toCurrency(totalPrice)}</p>
+                        <Label id = "credit-card" required> Cartão de crédito: </Label>
+                        <p> Entregar para: {address} </p>
+                        <Button> Pagar </Button>
+                    </form>
+                </div>
                 <Footer/>
             </>
         );

@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useNavigate } from "react-router-dom";
+import {useEffect} from 'react';
 
 import './Account.css';
 
@@ -19,6 +20,12 @@ const Account = ({GlobalState}) => {
         navigate("/");
     }
 
+    useEffect(() => {
+        if(login === "unlogged"){
+            navigate('/login')
+        }
+      });
+
     if (login === "unlogged") {
         return (
             <>
@@ -33,10 +40,15 @@ const Account = ({GlobalState}) => {
     {
         return (
             <>
+                
                 <Header />
-                <p> Bem vindo, usuário {loggedUser.name}! </p>
-                <Button onClick={() => navigate("/editarconta")}> Mudar dados da conta </Button> <br></br>
-                <Button onClick={ handleLogout }> Log out </Button>
+                <div id="divContaBg">
+                    <div id="divConta"> 
+                        <p> Bem vindo, usuário {loggedUser.name}! </p>
+                        <Button onClick={() => navigate("/editarconta")}> Mudar dados da conta </Button> <br></br>
+                        <Button onClick={ handleLogout }> Log out </Button>
+                    </div>
+                </div>
                 <Footer />
             </>
         );
@@ -46,10 +58,14 @@ const Account = ({GlobalState}) => {
         return (
             <>
                 <Header />
-                <p> Bem vindo, admin {loggedUser.name}! </p>
-                <Button onClick={() => navigate("/editarconta")}> Mudar dados da conta </Button> <br></br>
-                <Button onClick={() => navigate("/adicionarproduto")}> Adicionar Produto </Button> <br></br>
-                <Button onClick={ handleLogout }> Log out </Button>
+                <div id="divContaBg">
+                    <div id="divConta"> 
+                            <p> Bem vindo, admin {loggedUser.name}! </p>
+                            <Button onClick={() => navigate("/editarconta")}> Mudar dados da conta </Button> <br></br>
+                            <Button onClick={() => navigate("/adicionarproduto")}> Adicionar Produto </Button> <br></br>
+                            <Button onClick={ handleLogout }> Log out </Button>
+                    </div>
+                </div>
                 <Footer />
             </>
         );

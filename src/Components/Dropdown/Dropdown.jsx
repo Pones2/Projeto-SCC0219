@@ -36,7 +36,7 @@ const Dropdown = ({ children }) => {
 
             </Button>
 
-            <div style={{display:display}}>
+            <div style={{display:display}} id="dropdownOptions">
 
                 { children }
 

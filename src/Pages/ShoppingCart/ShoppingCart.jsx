@@ -65,6 +65,10 @@ const ShoppingCart = ({GlobalState}) => {
         return value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     }
 
+
+
+
+
     return (
         <>
             <Header />
@@ -72,17 +76,26 @@ const ShoppingCart = ({GlobalState}) => {
 
                 <div id="cartItems">
                     <div id="cartHeader">
-                        <p>Produto</p>
-                        <p>Preco Unitario</p>
+                        <p id="imgProdutoHeader">Imagem</p>
+                        <p id="nomeProdutoHeader">Produto</p>
+                        <p>Preço Unitario</p>
                         <p>Quantidade</p>
                         <p>Total</p>
 
                     </div>
 
                     {cartItems}
+                    <div id="cartTotalPrice">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p>{toCurrency(totalPrice)}</p>
+                    </div>
+                    
                 </div>
 
-                {toCurrency(totalPrice)}
+                
 
                 <div id="cartButtons">
                     <Button onClick={clearCart}> Esvaziar carrinho </Button>

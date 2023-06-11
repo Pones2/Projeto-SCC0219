@@ -205,8 +205,9 @@ const SingleProduct = ({GlobalState}) => {
                         
                     </div>
 
-                    <p> Editar produto: </p> <br></br>
-                        <form onSubmit={handleSubmit}>
+                    
+                        <form onSubmit={handleSubmit} id="formEditProd">
+                            <p id="textEditProd"> Editar produto: </p> <br></br>
                             <Label onChange={handleNameChange}> Nome </Label>
                             <Label onChange={handlePriceChange}> Preço </Label>
                             <Label onChange={handleTypeChange}> Tipo </Label>

@@ -19,14 +19,14 @@ const Header = () => {
                 <nav>
                     
                         <div class="logo">
-                            <a onClick={() => navigate("/")}><img src="https://files.catbox.moe/cjmq4l.png" alt="Logo Pet Shop"></img></a>
+                            <a onClick={() => navigate("/")}><img src={require('./logo.png')} alt="Logo Pet Shop"></img></a>
                         </div>
-                        <a class="navLink" onClick={() => navigate("/")}> Home </a>
+                        {/* <a class="navLink" onClick={() => navigate("/")}> Home </a>
                         <a class="navLink" onClick={() => navigate("/contato")}> Contato </a>
                         <a class="navLink" onClick={() => navigate("/criarconta")}> Criar Conta </a>
                         <a class="navLink" onClick={() => navigate("/login")}> Login </a>
                         <a class="navLink" onClick={() => navigate("/produtos")}> Produtos </a>
-                        <a class="navLink" onClick={() => navigate("/carrinho")}> Carrinho </a>
+                        <a class="navLink" onClick={() => navigate("/carrinho")}> Carrinho </a> */}
 
                         <Dropdown className="dropdown"> 
                             <Button className={"dropdownContent"} onClick={() => navigate("/contato")}> Contato </Button> <br></br>

@@ -109,8 +109,9 @@ const EditAccount = ({GlobalState}) => {
         return (
             <>
                 <Header />
-                <p> Editar conta: </p>
-                    <form onSubmit={handleSubmit}>
+                <div id="backgroundEdit">
+                    <form onSubmit={handleSubmit} id="formEdit">
+                        <h1 id="textoEdit"> Editar conta: </h1>
                         <Label onChange={handleNameChange} id="nome" placeholder={originalName} type="text"> Nome: </Label>
                         <Label onChange={handleEmailChange} id="email" placeholder={originalEmail} type="email"> Email: </Label>
                         <Label onChange={handlePasswordChange} id="senha" placeholder="senha" type="password"> Senha: </Label>
@@ -119,6 +120,7 @@ const EditAccount = ({GlobalState}) => {
                         <Label onChange={handlePhoneChange} id="telefone" placeholder={originalPhone} type="tel"> Telefone: </Label>
                         <Button> Confirmar </Button>
                     </form>
+                    </div>
                     {confirmMessage}
                 <Footer />
             </>

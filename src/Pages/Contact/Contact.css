@@ -73,3 +73,10 @@ label {
     background-color: rgb(177, 139, 211);
     
 }
+
+#mensagem{    
+    resize: none;
+    word-wrap: wrap;
+    word-break: break-all;
+    height: 100px;
+}
