@@ -7,3 +7,69 @@
     padding: 10px;
     border-radius: 5px;
 }
+
+#homePage{
+    display: flex;
+    flex-direction: column;
+}
+
+#homeButtons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+#homeButtons button {
+    background-color: rgb(210, 165, 250);
+    color: #fff;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    height: 5vh;
+    border: none;
+    border-radius: 20px;
+    font-size: 2.5vh;
+    width: 300px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 3px 5px 4px #888888;
+    font-family: Verdana, sans-serif;
+
+    @media (max-width:800px) {
+        width: 25vw;
+    }
+
+}
+
+#homeButtons button:hover {
+    background-color: rgb(177, 139, 211);
+    
+}
+
+#homeContent{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Berlin Sans FB Demi', sans-serif;
+    color: #3b3b3b;
+    font-size: 30px;
+    padding: 3vh;
+    padding-top: 0;
+}
+
+#homeContent p{
+    margin-bottom: 10vh;
+}
+
+#bannerImg{
+    width: 100%;
+}
+
+#homeBanner a{
+    opacity: 0.9;
+}
+
+#homeBanner a:hover{
+    opacity: 1;
+    cursor: pointer;
+}

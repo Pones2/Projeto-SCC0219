@@ -86,11 +86,6 @@ const Login = ( {GlobalState} ) => {
       });
 
 
-
-    if(login !== "unlogged"){
-        // window.location.replace('/conta');
-    }
-
     if(login === "unlogged")
     {
         return (
@@ -112,7 +107,7 @@ const Login = ( {GlobalState} ) => {
     }
     else
     {
-        return ( //<><p>Redirecionando...</p> </>
+        return (
             <>
                 <Header />
                 <h1>Login</h1>
