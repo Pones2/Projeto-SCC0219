@@ -10,7 +10,6 @@
     margin: 10vh 0 max(50vh,300px) 0;
     border-radius: 40px;
     box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
-    
 }
 
 #divContaBg{
@@ -20,7 +19,6 @@
     background-image: url(../../Assets/bgMud.png);
     background-repeat: no-repeat;
     background-position:bottom;
-    
 }
 
 #divConta p{
@@ -45,10 +43,8 @@
     padding: 0;
     box-shadow: 6px 10px 8px rgba(0,0,0,0.2);
     font-family: Verdana, sans-serif;
-
 }
 
 #divConta button:hover {
     background-color: #61a199;
-    
 }

@@ -1,3 +1,4 @@
+/* header */ 
 header {
 	background-color: rgb(145, 242, 229);
 	color: black;
@@ -5,21 +6,11 @@ header {
 	width: 98.9%; 
 }
 
-.navLink:hover {
-	background-color: rgb(125, 207, 196);
-	border-radius: 20px;
-	cursor: pointer;
-}
-
 nav {
 	display: flex;
-	/* justify-content: space-evenly; */
 	align-items: center;
-
 	justify-content: space-between;
 	padding: 0 max(100px,6%);
-
-	
 }
 
 .logo img {
@@ -32,13 +23,6 @@ nav {
 	cursor: pointer;
 }
 
-nav ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-}
-
 nav li {
 	margin-left: 20px;
 }
@@ -49,7 +33,6 @@ nav a {
 	font-weight: bold;
 	font-size: 18px;
 	padding: 6px;
-
 }
 
 
