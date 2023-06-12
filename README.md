@@ -1,70 +1,14 @@
-# Getting Started with Create React App
+Projeto para a Disciplinha SCC0219 - Introdução ao Desenvolvimento Web<br>
+<h4>Proposta : Você é um desenvolvedor de software e um de seus clientes o contratou para criar uma loja online.</h4>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<h3>Integrantes : <br></h3>
+Felipe Seiji Momma Valente - 12543700<br>
+Rodrigo de Freitas Lima - 12547510 <br>
+Pedro Liduino do Nascimento - 11796847 <br>
+<br>
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h2>Parte 1: Mockup da loja</h2>
+<p class="c18 title" id="h.ftbyzibxwod1"><span class="c4 c17">Project Report - Milestone 1</span></p><h3 class="c10" id="h.y8twtzxajku"><span class="c0">Requirements</span></h3><ul class="c16 lst-kix_trtnftnsy82f-0 start"><li class="c11 c9 li-bullet-0"><span class="c4 c2">Store focused on selling items.</span></li><li class="c11 c9 li-bullet-0"><span class="c2">The system has 2 types of users: Clients and Administrators</span></li></ul><ul class="c16 lst-kix_trtnftnsy82f-1 start"><li class="c14 li-bullet-0"><span class="c2">Administrators are responsible for registering/managing administrators, customers, and products/services provided. The application already comes with an account </span><span class="c2 c7">admin</span><span class="c2">&nbsp;with password </span><span class="c2 c7">admin</span><span class="c2">.</span></li><li class="c14 li-bullet-0"><span class="c2">Customers are users who access the system to buy products/services.</span></li></ul><ul class="c16 lst-kix_trtnftnsy82f-0"><li class="c11 c9 li-bullet-0"><span class="c2">The admin record includes: name, id, phone, email.</span></li><li class="c11 c9 li-bullet-0"><span class="c2">Each customer's record includes: name, id, address, phone, email</span></li><li class="c11 c9 li-bullet-0"><span class="c2">Product/services records include: name, id, photo, description, price, quantity (in stock), quantity sold.</span></li><li class="c11 c9 li-bullet-0"><span class="c2">Products are selected, their quantity chosen, and are included in a cart. Products are purchased using a credit card number (any number is accepted by the system). The quantity of product sold is subtracted from the quantity in stock and added to the quantity sold. Carts are emptied only on payment or by customers.</span></li><li class="c9 c11 li-bullet-0"><span class="c2">Administrators can create/update/read/delete new products and services. For example, they can change the stock quantity.</span></li><li class="c11 c9 li-bullet-0"><span class="c12">Your functionality: Create a functionality that is specific to your application. It does not have to be something complicated. For instance, if you are selling cars, you may allow users to use an accelerator to hear how each car engine roars up and down. &nbsp; </span></li><li class="c11 c9 li-bullet-0"><span class="c2 c4">The system must provide accessibility requirements and provide good usability. The system must be responsive, meaning that it should complete assigned tasks within a reasonable time.</span></li></ul><h3 class="c11 c15" id="h.1gbsgejweb7v"><span class="c0">Description</span></h3><ul class="c16 lst-kix_gw1epp1eb78a-0 start"><li class="c6 c9 li-bullet-0"><span class="c3">Mockup for a store focused on selling pet shop items. </span></li><li class="c6 c9 li-bullet-0"><span>Diagram: </span><span class="c19"><a class="c13" href="https://www.google.com/url?q=https://www.figma.com/file/4tiiKPwsFKTi7qcrllICG0/Pet-Shop-Website?node-id%3D0%253A1%26t%3DIjxkVtQpD2KpJ3mR-1&amp;sa=D&amp;source=editors&amp;ust=1683479845536425&amp;usg=AOvVaw0JwczPJD1Jwc1S-rIXU5up">https://www.figma.com/file/4tiiKPwsFKTi7qcrllICG0/Pet-Shop-Website?node-id=0%3A1&amp;t=IjxkVtQpD2KpJ3mR-1</a></span></li><li class="c6 c9 li-bullet-0"><span>The project is visually almost complete, with few missing pages.</span></li><li class="c6 c9 li-bullet-0"><span class="c3">Project still doesn’t save login data, therefore it can’t differentiate between admins and consumers.</span></li><li class="c6 c9 li-bullet-0"><span class="c3">Items sold are hardcoded into the html file, therefore can’t be modified and don’t have the necessary parameters.</span></li><li class="c6 c9 li-bullet-0"><span class="c3">Page for a specified product is incomplete.</span></li><li class="c6 c9 li-bullet-0"><span class="c3">Shopping cart is non-functional.</span></li><li class="c6 c9 li-bullet-0"><span class="c3">Contact information is not sent to the server.</span></li><li class="c6 c9 li-bullet-0"><span class="c3">Filter functionality is not implemented.</span></li><li class="c6 c9 li-bullet-0"><span class="c3">No specific functionality is implemented.</span></li></ul><p class="c6 c8"><span class="c3"></span></p><h3 class="c10" id="h.wbcrhckkwchp"><span class="c0">Comments about the code</span></h3><p class="c5"><span class="c3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Most of the code at this stage consists only of html and css files, apart from a single javascript function used to roll the slides in the main page.</span></p><p class="c6 c8"><span class="c3"></span></p><h3 class="c10" id="h.p56kfkndingb"><span>Test plan</span></h3><p class="c6"><span class="c3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test if the html mockups work fine, with no problems with the css.</span></p><h3 class="c10" id="h.fzkgqeam1n4o"><span class="c0">Test results</span></h3><p class="c6"><span class="c3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The pages were tested with Microsoft Edge and Mozilla Firefox. In the default aspect ratio (16x9) for desktops, the page works with no problems. But, with smaller width in desktop and in mobile browsers, the CSS in the page breaks. However, since at this stage the page is just a mockup, the team decided together that no fix was necessary at this milestone, and it will be fixed at a future time.</span></p><h3 class="c10" id="h.e9y7xnbu1s6q"><span class="c0">Build procedures</span></h3><ol class="c16 lst-kix_ok8cmbit94vu-0 start" start="1"><li class="c6 c9 li-bullet-0"><span class="c3">Install a browser with HTML5 and CSS3 support (such as Google Chrome, Firefox or Safari).</span></li><li class="c6 c9 li-bullet-0"><span class="c3">Open the index.html file contained in the folder /Projeto-SCC0219</span></li></ol><p class="c6 c8"><span class="c3"></span></p><h3 class="c10" id="h.462ij8mekqeu"><span class="c0">Problems</span></h3><ul class="c16 lst-kix_yumo3asg0d2s-0 start"><li class="c6 c9 li-bullet-0"><span class="c3">CSS breaks in mobile browsers and small width aspect ratios.</span></li></ul><h3 class="c10" id="h.r6cwc6fm8t38"><span class="c0">Comments</span></h3><p class="c6"><span class="c3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Since this is a mockup, the page design and style is susceptible to changes in the future.</span></p>
+<h2>Parte 2: Funcionalidade do cliente</h2>
+<h2>Parte Final: Aplicação totalmente funcional</h2>
