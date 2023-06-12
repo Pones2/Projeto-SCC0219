@@ -4,7 +4,7 @@
         "name": "Blusa Tweed com Manga Fábrica Pet Vinho Nº 00",
         "description": "Quando o frio chega é importante se proteger e também manter seu pet aquecido e confortável. As roupas de inverno para cachorro são os acessórios perfeitos para esta época do ano. A Blusa Tweed com Manga Fábrica Pet Vinho é ideal para passear nos dias frios. Deixa seu pet super quentinho e estiloso, sem deixar de lado o conforto do seu filho de 4 patas.",
         "type": "acessorio",
-        "imgSrc": "ProductsImages/blusa-tweed-com-manga-fabrica-pet-vinho-frente.webp",
+        "imgSrc": "/ProductsImages/blusa-tweed-com-manga-fabrica-pet-vinho-frente.webp",
         "price": 80,
         "quantity": 10,
         "sold": 2
@@ -14,7 +14,7 @@
         "name": "Ração Premier Cães Adultos Raças Pequenas 1 kg",
         "description": "A Ração Premier para Raças Pequenas Cães Adultos é elaborada apenas com ingredientes naturais nobres, sem corantes e aromatizantes artificiais. Sua composição ajuda o cãozinho a ter pele e pelagem saudáveis e bonitas.",
         "type": "alimento",
-        "imgSrc": "ProductsImages/Racao-Premier-Caes-Adultos-Racas-Pequenas-1kg-lateral.png",
+        "imgSrc": "/ProductsImages/Racao-Premier-Caes-Adultos-Racas-Pequenas-1kg-lateral.png",
         "price": 40,
         "quantity": 20,
         "sold": 4
@@ -24,7 +24,7 @@
         "name": "Brinquedo Macaco de Pelúcia Buddy Flicks para Cães Único",
         "description": "O Brinquedo Macaco de Pelúcia Buddy Flicks para Cães é um dos brinquedos mais divertidos para presentear seu animal de estimação. Afinal, cães adoram se divertir! Logo, é muito importante que tutores garantam o que há de melhor para eles.",
         "type": "brinquedo",
-        "imgSrc": "ProductsImages/Brinquedo-Macaco-de-Pelucia-Buddy-C-Pet-para-Caes-Sentado-Frente.png",
+        "imgSrc": "/ProductsImages/Brinquedo-Macaco-de-Pelucia-Buddy-C-Pet-para-Caes-Sentado-Frente.png",
         "price": 35,
         "quantity": 30,
         "sold": 3
@@ -34,7 +34,7 @@
         "name": "Antipulgas e Carrapatos Bravecto 4,5 a 10 kg para Cães 250mg 1 comprimido",
         "description": "O Bravecto 4,5 a 10 kg é um antipulgas e carrapatos para cães em formato de comprimido mastigável de 250mg desenvolvido pelo laboratório MSD Saúde Animal. O seu uso mantém o seu animal de estimação protegido contra infestação de parasitas por até 12 semanas.",
         "type": "medicamento",
-        "imgSrc": "ProductsImages/Antipulgas-e-Carrapatos-Bravecto-45-a-10-kg-para-Caes-250mg-dosagem.png",
+        "imgSrc": "/ProductsImages/Antipulgas-e-Carrapatos-Bravecto-45-a-10-kg-para-Caes-250mg-dosagem.png",
         "price": 250,
         "quantity": 10,
         "sold": 7
@@ -44,7 +44,7 @@
         "name": "Comedouro Colors Flicks Vermelho 250ml",
         "description": "O Comedouro Colors Flicks Vermelho é feito em aço inox, o que garante uma ótima durabilidade e na base possui borda de borracha natural, que o torna antideslizante, proporcionando um momento agradável na hora da alimentação do seu amigo, deixando o cantinho dele super elegante.",
         "type": "acessorio",
-        "imgSrc": "ProductsImages/1046005-400-400.png",
+        "imgSrc": "/ProductsImages/1046005-400-400.png",
         "price": 20,
         "quantity": 20,
         "sold": 0
@@ -54,7 +54,7 @@
         "name": "Guia Retrátil Black Design Flexi Prata PP",
         "description": "A Guia Retrátil Black Design Flexi Prata é perfeita para cães com portes pequeno e médio, proporcionando uma caminhada mais segura e confortável. Esta guia é retrátil e conta com variações de tamanho para atender cães de até 25 kg",
         "type": "acessorio",
-        "imgSrc": "ProductsImages/Prata.webp",
+        "imgSrc": "/ProductsImages/Prata.webp",
         "price": 120,
         "quantity": 30,
         "sold": 1
@@ -64,7 +64,7 @@
         "name": "Brinquedo Mordedor Dental Animania N°1",
         "description": "Uma forma divertida de manter o tártaro longe de seu pet, é o Brinquedo Mordedor Dental Animania, uma excelente forma de distração e interação com o seu cão, para ele brincar o dia todo. Fazê-lo gastar energia e exercitá-lo é bom para saúde e para o bem-estar dele.",
         "type": "brinquedo",
-        "imgSrc": "ProductsImages/Brinquedo-ossinho-dental-N-1.webp",
+        "imgSrc": "/ProductsImages/Brinquedo-ossinho-dental-N-1.webp",
         "price": 10,
         "quantity": 10,
         "sold": 6
@@ -74,7 +74,7 @@
         "name": "Ração Úmida Royal Canin Hypoallergenic Cães Adultos 200 g",
         "description": "A Ração Úmida Royal Canin Hypoallergenic Cães Adultos coadjuvante indicada para cães adultos com reações adversas ao alimento. É uma dieta especificamente formulada para apoiar os cães adultos com alergias e intolerâncias alimentares.",
         "type": "alimento",
-        "imgSrc": "ProductsImages/Alimento-Umido-Hypoallergenico-Royal-Canin-200g.webp",
+        "imgSrc": "/ProductsImages/Alimento-Umido-Hypoallergenico-Royal-Canin-200g.webp",
         "price": 30,
         "quantity": 20,
         "sold": 12
@@ -84,7 +84,7 @@
         "name": "Ração GranPlus Choice Gatos Adultos Frango e Carne 10,1 kg",
         "description": "A Ração GranPlus Choice Gatos Adultos Frango e Carne é o alimento ideal para o seu pet. Produzido com ingredientes nobres e ricos em vitaminas, essa é a sugestão perfeita para estimular o seu animal de estimação a ter uma rotina mais ativa e saudável.",
         "type": "alimento",
-        "imgSrc": "ProductsImages/Choice-Gatos-Adultos-Frango-e-Carne-Frente.webp",
+        "imgSrc": "/ProductsImages/Choice-Gatos-Adultos-Frango-e-Carne-Frente.webp",
         "price": 140,
         "quantity": 30,
         "sold": 10
