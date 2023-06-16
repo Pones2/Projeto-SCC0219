@@ -82,7 +82,7 @@ const SingleProduct = ({GlobalState}) => {
         };
 
         // if there are more products with the same id than the quantity available
-        if(countProducts()[id] > quantity)
+        if(countProducts()[id] >= quantity)
         {
             window.alert("Não há mais produtos disponíveis");
             return;

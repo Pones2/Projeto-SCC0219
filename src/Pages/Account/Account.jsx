@@ -63,6 +63,7 @@ const Account = ({GlobalState}) => {
                             <p> Bem vindo, admin {loggedUser.name}! </p>
                             <Button onClick={() => navigate("/editarconta")}> Mudar dados da conta </Button> <br></br>
                             <Button onClick={() => navigate("/adicionarproduto")}> Adicionar Produto </Button> <br></br>
+                            <Button onClick={() => navigate("/editarusuarios")}> Remover Usuários </Button> <br></br>
                             <Button onClick={ handleLogout }> Log out </Button>
                     </div>
                 </div>
