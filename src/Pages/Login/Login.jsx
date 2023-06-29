@@ -24,47 +24,80 @@ const Login = ( {GlobalState} ) => {
     //error message for when the login fails
     const [errorMessage, setErrorMessage] = React.useState("");
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const timer = setTimeout(() => {
-            fetch('/Users.json',{
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            }
-        }).then(response => response.json())
-        .then((data) => {
-            // finds user by email
-            const user = data.find((user) => user.email === email);
-            // if the email exists and the password matches
-            if (user && user.password === password)
-            {
-                if(user.admin)
-                {
-                    setLogin("admin");
-                    setLoggedUser(user);
-                    navigate("/");
-                }
-                else
-                {
-                    setLogin("user");
-                    setLoggedUser(user);
-                    navigate("/");
-                }
+        let resultGetUser = await fetch(
+            `http://localhost:5000/getUserLogin?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`, {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",}
+        })
 
-                setErrorMessage("");
+        resultGetUser = await resultGetUser.json();
+
+        if((resultGetUser.email !== undefined)){
+            console.log("Logado")
+            console.log(resultGetUser.email)
+
+            if(resultGetUser.admin)
+            {
+                setLogin("admin");
+                setLoggedUser(resultGetUser);
+                console.log(login)
+                //navigate("/");
             }
             else
             {
-                setLogin("unlogged");
-                setErrorMessage("Email ou senha incorretos.");
+                setLogin("user");
+                setLoggedUser(resultGetUser);
+                //navigate("/");
             }
-        }).catch(error => {
-            window.alert("Erro ao carregar o usuário. Erro = " + error)
-        })}, 100);
 
-        return () => clearTimeout(timer);
+        }else{
+            alert(resultGetUser)
+        }
+		console.warn(resultGetUser);
+
+        // const timer = setTimeout(() => {
+        //     fetch('/Users.json',{
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         Accept: "application/json"
+        //     }
+        // }).then(response => response.json())
+        // .then((data) => {
+        //     // finds user by email
+        //     const user = data.find((user) => user.email === email);
+        //     // if the email exists and the password matches
+        //     if (user && user.password === password)
+        //     {
+        //         if(user.admin)
+        //         {
+        //             setLogin("admin");
+        //             setLoggedUser(user);
+        //             console.log(login)
+        //             //navigate("/");
+        //         }
+        //         else
+        //         {
+        //             setLogin("user");
+        //             setLoggedUser(user);
+        //             //navigate("/");
+        //         }
+
+        //         setErrorMessage("");
+        //     }
+        //     else
+        //     {
+        //         setLogin("unlogged");
+        //         setErrorMessage("Email ou senha incorretos.");
+        //     }
+        // }).catch(error => {
+        //     window.alert("Erro ao carregar o usuário. Erro = " + error)
+        // })}, 100);
+
+        // return () => clearTimeout(timer);
     }
 
     const handleEmailChange = (event) => {

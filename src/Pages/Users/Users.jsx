@@ -17,13 +17,18 @@ const Users = ({GlobalState}) => {
     }
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            fetch('/Users.json',
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                }
+        const timer = setTimeout(async () => {
+            let quantity = 10
+            if (searchedUser != undefined && searchedUser != null && searchedUser && "")
+            quantity = 20
+
+
+            let result = await fetch(
+              `http://localhost:5000/getUsers?name=${encodeURIComponent(searchedUser)}&quantity=${quantity}}`, {
+              method: "get",
+              headers: {
+                  "Content-Type": "application/json",
+              }
             }).then(response => response.json()
             ).then((data) => {
                 console.log(data);

@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./AddProduct.css";
 
@@ -20,8 +21,10 @@ const AddProduct = ({GlobalState}) => {
 
     const [confirmMessage, setConfirmMessage] = useState("");
 
+    const navigate = useNavigate();
+
     //handle form changes
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         const product = {
@@ -35,11 +38,32 @@ const AddProduct = ({GlobalState}) => {
             sold: 0
         }
 
-        // convert data to JSON
-        const jsonData = JSON.stringify(product);
+        let result = await fetch(
+            'http://localhost:5000/addProduct', {
+            method: "post",
+            body: JSON.stringify(product),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+        
+        result = await result.json();
 
-        // simulate POST
-        localStorage.setItem("addProduct = " + id, jsonData);
+        console.log(result);
+
+        if(result.name)
+        {
+            alert("Produto adicionado com Sucesso!");
+            navigate("/conta");
+        }else{
+            alert("Erro ao Adicionar o Produto!");
+        }
+
+        // // convert data to JSON
+        // const jsonData = JSON.stringify(product);
+
+        // // simulate POST
+        // localStorage.setItem("addProduct = " + id, jsonData);
 
         // clear form
         setId("");
