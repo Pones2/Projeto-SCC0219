@@ -16,6 +16,7 @@ import NotFound from './Pages/NotFound/NotFound';
 import Account from './Pages/Account/Account';
 import EditAccount from './Pages/EditAccount/EditAccount';
 import AddProduct from './Pages/AddProduct/AddProduct';
+import Users from './Pages/Users/Users';
 
 const App = () => {
   // global variables
@@ -97,6 +98,11 @@ const App = () => {
       <Route path="/adicionarproduto" element = {
         <>
           <AddProduct GlobalState={GlobalState}/>
+        </>
+      }/>
+      <Route path="/editarusuarios" element = {
+        <>
+          <Users GlobalState={GlobalState}/>
         </>
       }/>
       <Route path="*" element = {
