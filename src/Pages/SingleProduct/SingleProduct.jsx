@@ -35,24 +35,24 @@ const SingleProduct = ({GlobalState}) => {
     const { id } = useParams();
 
     useEffect(() => {
+        console.log(id)
         // fetch data
-        const timer = setTimeout(() => {
-            fetch('/ProductsData.json', {
+        const timer = setTimeout(async () => {
+            let result = await fetch(
+                `http://localhost:5000/getOneProduct?id=${encodeURIComponent(id)}`, {
+                method: "get",
                 headers: {
                     "Content-Type": "application/json",
-                    Accept: "application/json"
                 }
-            })
-            .then(response => response.json())
-            .then((data) => {
+        }).then(response => response.json())
+            .then((product) => {
                 // finds the product with the id passed in the url
-                const product = data.find((product) => product.id === id);
 
                 setName(product.name);
                 setPrice(product.price);
                 setType(product.type);
                 setDescription(product.description);
-                setImgSrc(product.imgSrc);
+                setImgSrc("data:image/jpeg;base64," + product.image.data);
                 setQuantity(product.quantity);
             })
             .catch(error => {
@@ -113,6 +113,22 @@ const SingleProduct = ({GlobalState}) => {
         localStorage.setItem("product: " + name, productJSON);
 
         // OBS: the product is not updated in the ProductsData.json file, only in the localStorage
+    }
+
+    const handleClickDelete = async () => {
+        let resultDeleteProduct = await fetch(
+            `http://localhost:5000/deleteOneProduct?id=${encodeURIComponent(id)}`, {
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",}
+        })
+        
+        // console.log({"First : " : resultDeleteUser})
+        resultDeleteProduct = await resultDeleteProduct.json();
+        // console.log({"Second : " : resultDeleteUser})
+        alert(resultDeleteProduct.message);
+        
+        navigate('/produtos');
     }
 
     const handleNameChange = (event) => {
@@ -218,7 +234,7 @@ const SingleProduct = ({GlobalState}) => {
                             <Label onChange={handleQuantityChange}> Quantidade </Label>
                             <Button> Editar </Button>
                         </form>
-                        <Button> Deletar </Button>
+                        <Button onClick={handleClickDelete}> Deletar </Button>
                         </div>
                 </div>
                 <Footer />

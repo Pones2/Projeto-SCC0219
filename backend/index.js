@@ -156,11 +156,16 @@ app.get("/getUsers", async (req, resp) => {
   try {
     const quantity = req.query.quantity;
     const name = req.query.name;
-    const nameRegex = new RegExp(name, "i");
 
-    const users = await User.find({ name: nameRegex }).limit(
-      parseInt(quantity)
-    );
+    let users;
+    if(name != null && name !== undefined && name !== "" && name !==''){
+      const nameRegex = new RegExp(name, "i");
+
+      users = await User.find({ name: nameRegex }).limit(parseInt(quantity));
+    }else{
+      users = await User.find().limit(parseInt(quantity));
+    }
+
     resp.send(users); // Passando o email como argumento para o construtor de User
   } catch (e) {
     console.log("Erro de acesso ao banco", e);
@@ -170,7 +175,7 @@ app.get("/getUsers", async (req, resp) => {
 
 app.delete("/deleteUser", (req, res) => {
   const userEmail = req.query.email; // Obtém o email do usuário a ser excluído da consulta
-
+  console.log(userEmail)
   User.findOneAndDelete({ email: userEmail })
     .then((deletedUser) => {
       if (deletedUser) {
@@ -178,9 +183,7 @@ app.delete("/deleteUser", (req, res) => {
         res.status(200).json({ message: "Usuário excluído com sucesso." });
       } else {
         console.log("Nenhum usuário encontrado com o email fornecido.");
-        res
-          .status(404)
-          .json({ error: "Nenhum usuário encontrado com o email fornecido." });
+        res.status(404).json({ error: "Nenhum usuário encontrado com o email fornecido." });
       }
     })
     .catch((error) => {
@@ -261,13 +264,51 @@ app.get("/getProduct", async (req, resp) => {
     // Criar um novo objeto de produto com os dados e a imagem
     const products = await Product.find(filter).limit(limit);
     resp.send(products);
-    console.log("Os 10 primeiros produtos:");
-    products.forEach((product, index) => {
-      console.log(`Produto ${index + 1}:`, product.name);
-    });
+    // console.log("Os 10 primeiros produtos:");
+    // products.forEach((product, index) => {
+    //   console.log(`Produto ${index + 1}:`, product.name);
+    // });
   } catch (error) {
     console.error("Erro ao obter os produtos:", error);
   }
+});
+
+app.get("/getOneProduct", async (req, resp) => {
+  try {
+    const idProduct = req.query.id; // Acessando o parâmetro email da solicitação GET
+    console.log(idProduct)
+    let product = await Product.findOne({ _id : idProduct }); // Passando o email como argumento para o construtor de User
+    if (product) {
+      // console.log(product);
+      product = product.toObject();
+      resp.send(product); // Enviando o resultado da consulta como resposta
+      // console.log(product);
+    } else {
+      console.log("Produto Nao Encontrado");
+      resp.send(JSON.stringify("Produto Nao Encontrado"));
+    }
+  } catch (e) {
+    console.log("Erro de acesso ao banco");
+    resp.send(JSON.stringify("Erro de acesso ao banco"));
+  }
+});
+
+app.delete("/deleteOneProduct", (req, res) => {
+  const idProduct = req.query.id; // Obtém o email do usuário a ser excluído da consulta
+  Product.findOneAndDelete({ _id : idProduct })
+    .then((deletedUser) => {
+      if (deletedUser) {
+        console.log("Produto excluído:", deletedUser);
+        res.status(200).json({ message: "Produto excluído com sucesso." });
+      } else {
+        console.log("Nenhum Produto encontrado com o ID fornecido.");
+        res.status(404).json({ error: "Nenhum Produto encontrado com o ID fornecido." });
+      }
+    })
+    .catch((error) => {
+      console.error("Ocorreu um erro ao excluir o Produto:", error);
+      res.status(500).json({ error: "Ocorreu um erro ao excluir o Produto." });
+    });
 });
 
 app.listen(5000);

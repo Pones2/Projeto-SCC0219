@@ -13,14 +13,13 @@ const ProductsPage = ({ products }) => {
 
   // array of all filter values
   const [filterValues, setFilterValues] = useState({
-    name: "1",
+    name: "",
     price: 0,
     type: "todos",
   });
 
   // makes the filter work
   const handleFilterChange = (event) => {
-    console.log(123)
     const { name, value } = event.target;
     setFilterValues((prevValues) => ({
       ...prevValues,
@@ -40,8 +39,8 @@ const ProductsPage = ({ products }) => {
     }).then(response => response.json()
       ).then((data) => {
         
-        console.log(data)
-        console.log(filterValues);
+        // console.log(data)
+        // console.log(filterValues);
         
 
         let filteredProducts = data;
@@ -66,12 +65,13 @@ const ProductsPage = ({ products }) => {
             (product) => product.type === filterValues.type
           );
         }
-
+        
         // filtered products as a html tag
-        const filteredProductList = filteredProducts.map((element) => (<div class="product">
-          <Link to={`/produtos/${element.id}`} key={element.id} className="productsLink">
+        const filteredProductList = filteredProducts.map((element) => 
+        (<div class="product">
+          <Link to={`/produtos/${element._id}`} key={element._id} className="productsLink">
             <ProductDisplay
-              key={element.id}
+              key={element._id}
               imgSrc={"data:image/jpeg;base64," + element.image.data}
               name={element.name}
               description={element.description}

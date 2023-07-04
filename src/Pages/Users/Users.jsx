@@ -5,19 +5,40 @@ import Footer from "../../Components/Footer/Footer";
 import UserDisplay from "../../Components/UserDisplay/UserDisplay";
 
 import "./Users.css";
+import userEvent from "@testing-library/user-event";
 
 const Users = ({GlobalState}) => {
-    const {login} = GlobalState;
+    const {login, loggedUser,setLogin} = GlobalState;
     const [searchedUser, setSearchedUser] = React.useState("");
     const [userList, setUserList] = useState([]); // filtered list of users to be displayed
 
-    const deleteUser = (userEmail) => {
-        // simulate PUT request to the server
+    const deleteUser = async (userEmail) => {
+        // console.log(userEmail)
+        let resultDeleteUser = await fetch(
+            `http://localhost:5000/deleteUser?email=${encodeURIComponent(userEmail)}`, {
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",}
+        })
+        
+        // console.log({"First : " : resultDeleteUser})
+        resultDeleteUser = await resultDeleteUser.json();
+        // console.log({"Second : " : resultDeleteUser})
+        alert(resultDeleteUser.message);
+        
+        if(loggedUser.email == userEmail){
+            setLogin("unlogged");
+        }
+
+        setSearchedUser(userEmail);
+        setUserList(userEmail);
+        
         localStorage.setItem("deleteUser: " + userEmail, userEmail);
     }
 
     useEffect(() => {
         const timer = setTimeout(async () => {
+            console.log({"pesquisa " : searchedUser})
             let quantity = 10
             if (searchedUser != undefined && searchedUser != null && searchedUser && "")
             quantity = 20
