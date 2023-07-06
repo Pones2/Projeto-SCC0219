@@ -39,4 +39,40 @@ Pedro Liduino do Nascimento - 11796847 <br>
   <li> Front-end made with React </li>
   <li> Back-end made with MongoDB </li>
   <li> Project designed for desktops and mobile devices </li>
+    <li> Admin mock account: admin@admin.com (password: 123) </li>
+    <li> Client mock account: teste@teste.com (password: 123)</li>
 </ul>
+
+<h3> Comments about the code </h3>
+<ul>
+    <li> In addition to the front-end implemented in the Milestone 2, the backend code was made. </li>
+    <li> The backend code can be found in the /backend folder </li>
+    <li> Aditionally, the frontend was modified to be linked with the backend</li>
+</ul>
+
+<h3> Test Plan: </h3>
+
+<ul>
+    <li> Verify if every server call is being made correctly </li>
+    <li> Verify login and account to see if the users are being called correctly </li>
+    <li> Verify products to see if the products are being called correctly </li>
+    <li> Verify shopping cart to see if the sold products are being called correctly </li>
+    <li> Verify contacts page to see if they are being called correctly. </li>
+</ul>
+
+<h3> Test Results: </h3>
+
+<ul>
+    <li> No problems found in the tests. </li>
+</ul>
+
+<h3> Build Procedures: </h3>
+
+<ol class="c1 lst-kix_uti6taqy0myf-0 start" start="1"><li class="c7 li-bullet-1"><span>Download and install the latest version of </span><span class="c16"><a class="c14" href="https://www.google.com/url?q=https://nodejs.org/en&amp;sa=D&amp;source=editors&amp;ust=1686536618108637&amp;usg=AOvVaw1FiZ1trDrQjKD0LoMvRJC_">Node.js</a></span><span class="c3">.</span></li><li class="c7 li-bullet-1"><span class="c3">Open the terminal on the folder you want the project to be in and run the command &ldquo;npx create-react-app pet-shop&rdquo;</span></li></ol><ol class="c1 lst-kix_uti6taqy0myf-1 start" start="1"><li class="c4 li-bullet-1"><span class="c3">On Windows, to open the terminal on a specific folder, open that folder on file explorer, shift + right click and select &ldquo;Open PowerShell window here&rdquo;.</span></li><li class="c4 li-bullet-1"><span class="c3">On Mac, to open the terminal on a specific folder, select the folder on Finder, right click and select &ldquo;New Terminal at Folder&rdquo;.</span></li><li class="c4 li-bullet-1"><span class="c3">On linux, to open the terminal on a specific folder, open that folder on the file explorer, right click and select &ldquo;Open in Terminal&rdquo;.</span></li></ol><ol class="c1 lst-kix_uti6taqy0myf-0" start="3"><li class="c7 li-bullet-1"><span>Download or clone the code in the </span><span class="c16"><a class="c14" href="https://www.google.com/url?q=https://github.com/Pones2/Projeto-SCC0219/tree/milestone-2&amp;sa=D&amp;source=editors&amp;ust=1686536618109442&amp;usg=AOvVaw2vIqn44bvtp-P0jds7JebC">github</a></span><span class="c3">.</span></li><li class="c7 li-bullet-1"><span class="c3">Run the command &ldquo;cd pet-shop&rdquo; on the terminal.</span></li><li class="c7 li-bullet-1"><span class="c3">Run the command &ldquo;npm run build&rdquo; on the terminal.</span></li><li class="c7 li-bullet-1"><span class="c3">Run the command &ldquo;npm install -g serve&rdquo; on the terminal.</span></li><li class="c7 li-bullet-1"><span class="c3">Run the command &ldquo;serve -s build&rdquo; on the terminal.</span></li>
+<li> Install the latest version of <a href="https://www.mongodb.com/docs/manual/installation/"> MongoDB </a> for your platform </li>
+<li> Run the index.js in the /backend folder </li>
+<li> Install the latest version of <a href="https://www.mongodb.com/try/download/compass"> Compass </a> for your platform </li>]
+<li> Open Compass and start the server on the default port(mongodb://localhost:27017)</li>
+<li> Populate the petshop databese with the data inside the /Banco_De_Dados_Exemplo folder</li>
+<li class="c7 li-bullet-1"><span>Open </span><span class="c16"><a class="c14" href="https://www.google.com/url?q=http://localhost:3000&amp;sa=D&amp;source=editors&amp;ust=1686536618109978&amp;usg=AOvVaw00ZwW_zQmjWxEZoMg-oeTy">http://localhost:3000</a></span><span class="c3">&nbsp;in the browser.</span></li>
+</ol>
