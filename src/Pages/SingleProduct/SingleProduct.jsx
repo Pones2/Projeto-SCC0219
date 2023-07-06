@@ -37,7 +37,7 @@ const SingleProduct = ({GlobalState}) => {
 
     const { id } = useParams();
 
-    useEffect(() => {
+    useEffect(async () => {
         // fetch data
         let result = await fetch(
           `http://localhost:5000/getOneProduct?id=${encodeURIComponent(id)}`, {
@@ -72,8 +72,6 @@ const SingleProduct = ({GlobalState}) => {
             .catch(error => {
                 window.alert("Erro ao carregar o produto. Erro = " + error)
             });
-        }, 100);
-        return () => clearTimeout(timer);
     }, []);
 
     const addToCart = () => {
@@ -105,6 +103,11 @@ const SingleProduct = ({GlobalState}) => {
 
         // if there are more products with the same id than the quantity available
         if(countProducts()[id] + tempCartQuantity > quantity)
+        {
+            window.alert("Não há mais produtos disponíveis");
+            return;
+        }
+
           
         const updatedCart = [...cart];
         
@@ -145,8 +148,6 @@ const SingleProduct = ({GlobalState}) => {
             options.push(<option value={i}> {i} </option>);
         }
         return options;
-    }
-
     }
 
     const product = {
@@ -227,6 +228,19 @@ const SingleProduct = ({GlobalState}) => {
   const handleQuantityChange = (event) => {
     setUpdatedQuantity(event.target.value);
   };
+
+  const handleCartQuantityChange = (event) => {
+    setCartQuantity(parseInt(event.target.value, 10));
+    };
+
+    const generateNumOfProducts = (n) => {
+        const options = [];
+        for(let i = 1; i <= n; i++)
+        {
+            options.push(<option value={i}> {i} </option>);
+        }
+        return options;
+    }
 
   // converts to brl currency
   function toCurrency(value) {
