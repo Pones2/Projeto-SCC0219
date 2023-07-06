@@ -110,7 +110,26 @@ const SoldSchema = new mongoose.Schema({
   },
 });
 const Sold = mongoose.model("Sold", SoldSchema);
-module.exports = Product;
+module.exports = Sold;
+
+//esquema dos contatos
+const contactSchema = new mongoose.Schema({
+  name: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  message: {
+    type: String,
+  },
+});
+const Contact = mongoose.model("Contact", contactSchema);
+module.exports = Contact;
 
 //express
 const express = require("express");
@@ -475,6 +494,51 @@ app.post("/addSold", async (req, resp) => {
   } catch (error) {
     console.error("Erro ao inserir a venda:", error);
     resp.send(null);
+  }
+});
+
+//cria uma mensagem de contato
+app.post("/addContact", async (req, resp) => {
+  try {
+    //criando a nova mensagem com os dados passados
+    const newContact = new Contact({
+      name: req.body.name,
+      email: req.body.email,
+      message: req.body.message,
+    });
+
+    //salvando no banco
+    const savedContact = await newContact.save();
+    if (savedContact) {
+      resp.send("Mensagem enviada com Sucesso!");
+    } else {
+      resp.send(null);
+    }
+  } catch (error) {
+    console.error("Erro ao inserir a mensagem:", error);
+    resp.send(null);
+  }
+});
+
+//carrega as mensagens para o frontend
+app.get("/getContact", async (req, resp) => {
+  try {
+    const quantity = req.query.quantity;
+
+    if (!quantity) {
+      quantity = 1000;
+    }
+
+    //pega as mensagens
+    const contacts = await Product.find().limit(quantity);
+
+    if (contacts) {
+      resp.send(contacts);
+    } else {
+      resp.send("Nenhuma mensagem encontrda!");
+    }
+  } catch (error) {
+    console.error("Erro ao obter as mensagens de contato:", error);
   }
 });
 

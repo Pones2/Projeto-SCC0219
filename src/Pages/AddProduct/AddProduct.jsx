@@ -57,12 +57,6 @@ const AddProduct = ({ GlobalState }) => {
       alert("Erro ao Adicionar o Produto!");
     }
 
-    // // convert data to JSON
-    // const jsonData = JSON.stringify(product);
-
-    // // simulate POST
-    // localStorage.setItem("addProduct = " + id, jsonData);
-
     // clear form
     setId("");
     setName("");
@@ -73,10 +67,6 @@ const AddProduct = ({ GlobalState }) => {
     setQuantity(0);
 
     setConfirmMessage("Produto adicionado com sucesso!");
-  };
-
-  const handleIdChange = (event) => {
-    setId(event.target.value);
   };
 
   const handleNameChange = (event) => {
