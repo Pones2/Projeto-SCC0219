@@ -8,66 +8,106 @@ import Header from "../../Components/Header/Header";
 import Label from "../../Components/Label/Label";
 
 const Contact = () => {
-    // contact variables
-    const [name, setName] = React.useState("");
-    const [email, setEmail] = React.useState("");
-    const [message, setMessage] = React.useState("");
+  // contact variables
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [message, setMessage] = React.useState("");
 
-    // confirmation message
-    const [sentMessage, setSentMessage] = React.useState("");
+  // confirmation message
+  const [sentMessage, setSentMessage] = React.useState("");
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-        const data = {
-            name: name,
-            email: email,
-            message: message
-        }
+    const data = {
+      name: name,
+      email: email,
+      message: message,
+    };
 
-        // converts the data to JSON
-        const jsonData = JSON.stringify(data);
-    
-        // simulate POST
-        localStorage.setItem(email, jsonData);
+    //POST
+    let result = await fetch("http://localhost:5000/addContact", {
+      method: "post",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-        // note: there is no fetch because there is no backend to receive POST requests
-
-        // resets the form
-        setName("");
-        setEmail("");
-        setMessage("");
-        setSentMessage("Mensagem enviada com sucesso!");
+    if (result) {
+      console.log(result);
+      alert("Mensagem enviada com sucesso!");
+    } else {
+      alert("Erro ao enviar a mensagem");
     }
 
-    const handleNameChange = (event) => {
-        setName(event.target.value);
-    }
+    // resets the form
+    setName("");
+    setEmail("");
+    setMessage("");
+    setSentMessage("Mensagem enviada com sucesso!");
+  };
 
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-    }
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
 
-    const handleMessageChange = (event) => {
-        setMessage(event.target.value);
-    }
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
 
-    return (
-        <>
-            <Header />
+  const handleMessageChange = (event) => {
+    setMessage(event.target.value);
+  };
 
-            <form onSubmit={handleSubmit} id="formContato">
-                <h2 id="textoContato">Entre em contato conosco</h2>
-                <p>Preencha o formulário abaixo para entrar em contato com a nossa loja.</p>
-                <Label id="nome" type="text" onChange={handleNameChange} placeholder="Nome" required> Nome: </Label> <br></br>
-                <Label id="email" type="email" onChange={handleEmailChange} placeholder="E-mail" required> Email: </Label> <br></br>
-                <Label id="mensagem" type="textarea" onChange={handleMessageChange} placeholder="Digite aqui sua mensagem" required> Mensagem: </Label> <br></br>
-                <Button> Enviar mensagem </Button>
-                {sentMessage}
-            </form>
-            <Footer />
-        </>
-    );
-}
+  return (
+    <>
+      <Header />
+
+      <form onSubmit={handleSubmit} id="formContato">
+        <h2 id="textoContato">Entre em contato conosco</h2>
+        <p>
+          Preencha o formulário abaixo para entrar em contato com a nossa loja.
+        </p>
+        <Label
+          id="nome"
+          type="text"
+          onChange={handleNameChange}
+          placeholder="Nome"
+          required
+        >
+          {" "}
+          Nome:{" "}
+        </Label>{" "}
+        <br></br>
+        <Label
+          id="email"
+          type="email"
+          onChange={handleEmailChange}
+          placeholder="E-mail"
+          required
+        >
+          {" "}
+          Email:{" "}
+        </Label>{" "}
+        <br></br>
+        <Label
+          id="mensagem"
+          type="textarea"
+          onChange={handleMessageChange}
+          placeholder="Digite aqui sua mensagem"
+          required
+        >
+          {" "}
+          Mensagem:{" "}
+        </Label>{" "}
+        <br></br>
+        <Button> Enviar mensagem </Button>
+        {sentMessage}
+      </form>
+      <Footer />
+    </>
+  );
+};
 
 export default Contact;

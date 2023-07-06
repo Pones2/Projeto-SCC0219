@@ -27,7 +27,7 @@ const CreateAccount = ({GlobalState}) => {
     // password != confirmPassword error
     const [passwordError, setPasswordError] = React.useState("");
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         // password does not coincide
@@ -37,59 +37,42 @@ const CreateAccount = ({GlobalState}) => {
             return;
         }
 
-        const timer = setTimeout(() => {
-            fetch("/Users.json", {
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                }
-            }).then(response => response.json()
-            ).then((data) => {
-                const user = data.find((user) => user.email === email);
+        // let resultGetUser = await fetch(
+        //     `http://localhost:5000/getUser?email=${encodeURIComponent(email)}`, {
+        //         method: "GET",
+        //         headers: {
+        //           "Content-Type": "application/json",}
+        // })
 
-                if(user)
-                {
-                    window.alert("Já existe uma conta com esse email.");
-                    return;
-                }
-                else
-                {
-                    const data = {
-                        name: name,
-                        email: email,
-                        password: password,
-                        phone: phone,
-                        address: address
-                    }
-            
-                    // converts the data to JSON
-                    const jsonData = JSON.stringify(data);
-            
-                    // simulate POST
-            
-                    localStorage.setItem(email, jsonData);
-            
-                    // note: there is no fetch because there is no backend to receive POST requests
-            
-                    // resets the form
-                    setName("");
-                    setEmail("");
-                    setPassword("");
-                    setConfirmPassword("");
-                    setPhone("");
-                    setAddress("");
-            
-                    setPasswordError("");
-            
-                    navigate("/login");
-                }
-            }).catch(error => {
-                window.alert("Erro ao tentar cadastrar uma conta. Erro = " + error);
-                return;
-            });
-        }, 100);
+        // resultGetUser = await resultGetUser.json();
+		// console.warn(resultGetUser);
 
-        return () => clearTimeout(timer);
+        let result = await fetch(
+            'http://localhost:5000/register', {
+            method: "post",
+            body: JSON.stringify({ name, email,password,phone,address }),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+
+        result = await result.json();
+		//console.warn(result);
+
+		if (result == "Usuario Cadastrado Com Sucesso") {
+			alert("Usuario Cadastrado Com Sucesso");
+            setName("");
+            setEmail("");
+            setPassword("");
+            setConfirmPassword("");
+            setPhone("");
+            setAddress("");
+    
+            setPasswordError("");
+            navigate("/login");
+		}else{
+            alert(result);
+        }
     }
 
     const handleNameChange = (event) => {

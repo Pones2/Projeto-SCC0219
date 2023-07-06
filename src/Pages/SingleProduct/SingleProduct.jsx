@@ -1,7 +1,7 @@
 //since is only cliente side, the delete functionality is not implemented
 
-import React, {useState, useEffect} from "react";
-import { Link , useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import "./SingleProduct.css";
@@ -39,9 +39,10 @@ const SingleProduct = ({GlobalState}) => {
 
     useEffect(() => {
         // fetch data
-        const timer = setTimeout(() => {
-            fetch('/ProductsData.json', {
+        let result = await fetch(
+          `http://localhost:5000/getOneProduct?id=${encodeURIComponent(id)}`, {
                 headers: {
+                    method: "get",
                     "Content-Type": "application/json",
                     Accept: "application/json"
                 }
@@ -55,7 +56,7 @@ const SingleProduct = ({GlobalState}) => {
                 setPrice(product.price);
                 setType(product.type);
                 setDescription(product.description);
-                setImgSrc(product.imgSrc);
+                setImgSrc("data:image/jpeg;base64," + product.image.data);
                 setQuantity(product.quantity);
 
                 // doesnt reset the amount of products in the cart
@@ -104,11 +105,7 @@ const SingleProduct = ({GlobalState}) => {
 
         // if there are more products with the same id than the quantity available
         if(countProducts()[id] + tempCartQuantity > quantity)
-        {
-            window.alert("Não há mais produtos disponíveis");
-            return;
-        }
-
+          
         const updatedCart = [...cart];
         
         for (let i = 0; i < tempCartQuantity; i++) {
@@ -120,53 +117,22 @@ const SingleProduct = ({GlobalState}) => {
         setCart(updatedCart);
     }
 
-    // form changes 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+  // form changes
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-        const product = {
-            // mantem os valores originais caso o admin não altere
-            name: updatedName !== "" ? updatedName : name,
-            price: updatedPrice !== "" ? updatedPrice : price,
-            type: updatedType !== "" ? updatedType : type,
-            description: updatedDescription !== "" ? updatedDescription : description,
-            imgSrc: updatedImgSrc !== "" ? updatedImgSrc : imgSrc,
-            quantity: updatedQuantity !== "" ? updatedQuantity : quantity
-        }
-
-        // convert to JSON
-        const productJSON = JSON.stringify(product);
-
-        // simulate POST
-
-        localStorage.setItem("product: " + name, productJSON);
-
-        // OBS: the product is not updated in the ProductsData.json file, only in the localStorage
+    if (
+      updatedName === "" &&
+      updatedPrice === 0 &&
+      updatedType === "todos" &&
+      updatedDescription === "" &&
+      updatedQuantity === 0 &&
+      updatedImgSrc === ""
+    ) {
+      window.alert("Nenhum dado para atualizar.");
+      return;
     }
 
-    const handleNameChange = (event) => {
-        setUpdatedName(event.target.value);
-    }
-
-    const handlePriceChange = (event) => {
-        setUpdatedPrice(event.target.value);
-    }
-
-    const handleTypeChange = (event) => {
-        setUpdatedType(event.target.value);
-    }
-
-    const handleDescriptionChange = (event) => {
-        setUpdatedDescription(event.target.value);
-    }
-
-    const handleImgSrcChange = (event) => {
-        setUpdatedImgSrc(event.target.value);
-    }
-
-    const handleQuantityChange = (event) => {
-        setUpdatedQuantity(event.target.value);
-    }
 
     const handleCartQuantityChange = (event) => {
         setCartQuantity(parseInt(event.target.value, 10));
@@ -181,13 +147,96 @@ const SingleProduct = ({GlobalState}) => {
         return options;
     }
 
-    // converts to brl currency
-    function toCurrency(value)
-    {
-        return value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     }
 
-    if (login !== "admin")
+    const product = {
+      // mantem os valores originais caso o admin não altere
+      name: updatedName !== "" ? updatedName : name,
+      price: updatedPrice !== 0 ? parseInt(updatedPrice) : price,
+      type: updatedType !== "" ? updatedType : type,
+      description: updatedDescription !== "" ? updatedDescription : description,
+      imgSrc: updatedImgSrc,
+      quantity: updatedQuantity !== 0 ? parseInt(updatedQuantity) : quantity,
+    };
+
+    let result = await fetch(
+      `http://localhost:5000/updateProduct?id=${encodeURIComponent(id)}`,
+      {
+        method: "put",
+        body: JSON.stringify(product),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    result = await result.json();
+    console.log(result);
+    alert(result.message);
+
+    navigate("/produtos");
+
+    // convert to JSON
+    // const productJSON = JSON.stringify(product);
+
+    // // simulate POST
+
+    // localStorage.setItem("product: " + name, productJSON);
+
+    // OBS: the product is not updated in the ProductsData.json file, only in the localStorage
+  };
+
+  const handleClickDelete = async () => {
+    let resultDeleteProduct = await fetch(
+      `http://localhost:5000/deleteOneProduct?id=${encodeURIComponent(id)}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    // console.log({"First : " : resultDeleteUser})
+    resultDeleteProduct = await resultDeleteProduct.json();
+    // console.log({"Second : " : resultDeleteUser})
+    alert(resultDeleteProduct.message);
+
+    navigate("/produtos");
+  };
+
+  const handleNameChange = (event) => {
+    setUpdatedName(event.target.value);
+  };
+
+  const handlePriceChange = (event) => {
+    setUpdatedPrice(event.target.value);
+  };
+
+  const handleTypeChange = (event) => {
+    setUpdatedType(event.target.value);
+  };
+
+  const handleDescriptionChange = (event) => {
+    setUpdatedDescription(event.target.value);
+  };
+
+  const handleImgSrcChange = (event) => {
+    setUpdatedImgSrc(event.target.value);
+  };
+
+  const handleQuantityChange = (event) => {
+    setUpdatedQuantity(event.target.value);
+  };
+
+  // converts to brl currency
+  function toCurrency(value) {
+    return value.toLocaleString("pt-br", {
+      style: "currency",
+      currency: "BRL",
+    });
+  }
+
+  if (login !== "admin")
     {
         return (
             <>
@@ -278,7 +327,7 @@ const SingleProduct = ({GlobalState}) => {
                 <Footer />
             </>
         );
-    }
-}
+  }
+};
 
 export default SingleProduct;

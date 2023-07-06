@@ -29,16 +29,19 @@ const ProductsPage = ({ products }) => {
 
   useEffect(() => {
     // fetch data
-    const timer = setTimeout(() => {
-      fetch('/ProductsData.json',
-      {
+    const timer = setTimeout(async () => {
+      let result = await fetch(
+        `http://localhost:5000/getProduct?name=${encodeURIComponent(filterValues.name)}&price=${filterValues.price}&type=${encodeURIComponent(filterValues.type)}`, {
+        method: "get",
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
+            "Content-Type": "application/json",
         }
-      }).then(response => response.json()
+    }).then(response => response.json()
       ).then((data) => {
-        console.log(filterValues);
+        
+        // console.log(data)
+        // console.log(filterValues);
+        
 
         let filteredProducts = data;
 
@@ -62,13 +65,14 @@ const ProductsPage = ({ products }) => {
             (product) => product.type === filterValues.type
           );
         }
-
+        
         // filtered products as a html tag
-        const filteredProductList = filteredProducts.map((element) => (<div class="product">
-          <Link to={`/produtos/${element.id}`} key={element.id} className="productsLink">
+        const filteredProductList = filteredProducts.map((element) => 
+        (<div class="product">
+          <Link to={`/produtos/${element._id}`} key={element._id} className="productsLink">
             <ProductDisplay
-              key={element.id}
-              imgSrc={element.imgSrc}
+              key={element._id}
+              imgSrc={"data:image/jpeg;base64," + element.image.data}
               name={element.name}
               description={element.description}
               price={element.price}
@@ -82,6 +86,13 @@ const ProductsPage = ({ products }) => {
 
       return () => clearTimeout(timer);
   }, [filterValues, products]);
+
+  // const translateImageToJpg = async (base64Data) => {
+  //   const base64Image = base64Data.replace(/^data:image\/jpeg;base64,/, "");
+  //   const binaryData = Buffer.from(base64Image, "base64");
+  //   const url = URL.createObjectURL(new Blob([binaryData], { type: "image/jpeg" }));
+  //   return url
+  // }
 
   return (
     <>
