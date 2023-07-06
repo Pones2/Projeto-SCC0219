@@ -1,0 +1,62 @@
+[{
+  "_id": {
+    "$oid": "64a6d2e6eebf8d0a5f2bd982"
+  },
+  "userEmail": "joao@gmail.com",
+  "userName": "Joao Joaozinho",
+  "totalPrice": 220,
+  "userAddres": "Avenida do Joaozinho, 534, Apartamento 32",
+  "products": [
+    {
+      "name": "Blusa Tweed com Manga Fábrica Pet Vinho Nº 00",
+      "price": 80,
+      "quantity": 0,
+      "type": "acessorio",
+      "sold": 0,
+      "_id": {
+        "$oid": "64a6d2e6eebf8d0a5f2bd983"
+      }
+    },
+    {
+      "name": "Ração GranPlus Choice Gatos Adultos Frango e Carne 10,1 kg",
+      "price": 140,
+      "quantity": 0,
+      "type": "alimento",
+      "sold": 0,
+      "_id": {
+        "$oid": "64a6d2e6eebf8d0a5f2bd984"
+      }
+    }
+  ],
+  "delivered": false,
+  "soldDate": {
+    "$date": "2023-07-06T14:42:46.627Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a6d697eebf8d0a5f2bd992"
+  },
+  "userEmail": "joao@gmail.com",
+  "userName": "Joao Joaozinho",
+  "totalPrice": 250,
+  "userAddres": "Avenida do Joaozinho, 534, Apartamento 32",
+  "products": [
+    {
+      "name": "Antipulgas e Carrapatos Bravecto 4,5 a 10 kg para Cães 250mg 1 comprimido",
+      "price": 250,
+      "quantity": 0,
+      "type": "medicamento",
+      "sold": 0,
+      "_id": {
+        "$oid": "64a6d697eebf8d0a5f2bd993"
+      }
+    }
+  ],
+  "delivered": true,
+  "soldDate": {
+    "$date": "2023-07-06T14:58:31.915Z"
+  },
+  "__v": 0
+}]

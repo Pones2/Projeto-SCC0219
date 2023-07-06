@@ -31,7 +31,8 @@ const EditAccount = ({GlobalState}) => {
 
     // handle form changes
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
+        const {setLogin} = GlobalState;
         event.preventDefault();
 
         if(name === '' && email === '' && password === '' && confirmPassword === '' && address === '' && phone === '')
@@ -55,11 +56,30 @@ const EditAccount = ({GlobalState}) => {
             phone: phone === '' ? originalPhone : phone
         }
 
-        // convert data to JSON
-        const jsonData = JSON.stringify(data);
+        // console.log(data);
 
-        // simulate POST
-        localStorage.setItem("changeUser = " + email, jsonData);
+        // convert data to JSON
+        //const jsonData = JSON.stringify(data);
+
+        // // simulate POST
+        
+
+        let result = await fetch(
+            `http://localhost:5000/updateUser?email=${encodeURIComponent(originalEmail)}`, {
+            method: "put",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+        result = await result.json();
+        alert(result.message);
+
+        setLogin("unlogged");
+        navigate("/login");
+        
+
+        //localStorage.setItem("changeUser = " + email, jsonData);
 
         setName("");
         setAddress("");

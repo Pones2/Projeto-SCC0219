@@ -83,6 +83,35 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model("Product", productSchema);
 module.exports = Product;
 
+//esquema das vendas
+const SoldSchema = new mongoose.Schema({
+  userEmail: {
+    type: String,
+  },
+  userName: {
+    type: String,
+  },
+  soldDate: {
+    type: Date,
+    default: Date.now,
+  },
+  totalPrice: {
+    type: Number,
+  },
+  userAddres: {
+    type: String,
+  },
+  products: {
+    type: [productSchema],
+  },
+  delivered: {
+    type: Boolean,
+    default: false,
+  },
+});
+const Sold = mongoose.model("Sold", SoldSchema);
+module.exports = Product;
+
 //express
 const express = require("express");
 const app = express();
@@ -92,25 +121,27 @@ console.log("App funcionando na porta 5000");
 app.use(express.json());
 app.use(cors());
 
+//registrar usuario
 app.post("/register", async (req, resp) => {
   try {
     const email = req.body.email;
 
-    // Verificar se o usuário já está registrado
+    //verifica se o usuario ja  esta registrado
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
+      //caso o email ja esteja cadastrado
       console.log("Email ja cadastrado no Sistema");
       resp.send(JSON.stringify("Email ja cadastrado no Sistema"));
     } else {
-      // Criar um novo usuário
+      //caso o email nao esteja cadastrado
+      //criando um novo usuario
       const user = new User(req.body);
       let result = await user.save();
       result = result.toObject();
 
       if (result) {
         delete result.password;
-        //   resp.send(result);
         console.log(result);
         resp.send(JSON.stringify("Usuario Cadastrado Com Sucesso"));
       } else {
@@ -124,19 +155,21 @@ app.post("/register", async (req, resp) => {
   }
 });
 
+//login de usuario
 app.get("/getUserLogin", async (req, resp) => {
   try {
-    const email = req.query.email; // Acessando o parâmetro email da solicitação GET
+    const email = req.query.email;
     const password = req.query.password;
 
-    let user = await User.findOne({ email }); // Passando o email como argumento para o construtor de User
+    //procurando o login correto
+    let user = await User.findOne({ email });
     if (user) {
-      console.log(user.password);
-      console.log(password);
       user = user.toObject();
+
       if (user.password == password) {
+        //verifica se a senha esta correta
         delete user.password;
-        resp.send(user); // Enviando o resultado da consulta como resposta
+        resp.send(user);
         console.log(user);
       } else {
         console.log("Senha Incorreta");
@@ -152,38 +185,46 @@ app.get("/getUserLogin", async (req, resp) => {
   }
 });
 
+//carrega usuarios
 app.get("/getUsers", async (req, resp) => {
   try {
     const quantity = req.query.quantity;
     const name = req.query.name;
-
     let users;
-    if(name != null && name !== undefined && name !== "" && name !==''){
+
+    //faz um regex do nome para uma melhor pesquisa
+    if (name != null && name !== undefined && name !== "" && name !== "") {
       const nameRegex = new RegExp(name, "i");
 
       users = await User.find({ name: nameRegex }).limit(parseInt(quantity));
-    }else{
+    } else {
       users = await User.find().limit(parseInt(quantity));
     }
 
-    resp.send(users); // Passando o email como argumento para o construtor de User
+    resp.send(users);
   } catch (e) {
     console.log("Erro de acesso ao banco", e);
     resp.send(JSON.stringify("Erro de acesso ao banco"));
   }
 });
 
+//deletar usuario
 app.delete("/deleteUser", (req, res) => {
-  const userEmail = req.query.email; // Obtém o email do usuário a ser excluído da consulta
-  console.log(userEmail)
+  const userEmail = req.query.email;
+
+  //procura o usuario com o email e deleta
   User.findOneAndDelete({ email: userEmail })
     .then((deletedUser) => {
       if (deletedUser) {
+        //caso tenha encontrado o usuario
         console.log("Usuário excluído:", deletedUser);
         res.status(200).json({ message: "Usuário excluído com sucesso." });
       } else {
+        //caso nao tenha encontrado o usuario
         console.log("Nenhum usuário encontrado com o email fornecido.");
-        res.status(404).json({ error: "Nenhum usuário encontrado com o email fornecido." });
+        res
+          .status(404)
+          .json({ error: "Nenhum usuário encontrado com o email fornecido." });
       }
     })
     .catch((error) => {
@@ -192,10 +233,56 @@ app.delete("/deleteUser", (req, res) => {
     });
 });
 
+//atualizar as informacoes de usuario
+app.put("/updateUser", (req, res) => {
+  const userEmail = req.query.email;
+  const newPassword = req.body.password;
+  const newEmail = req.body.email;
+  const newAddress = req.body.address;
+  const newPhone = req.body.phone;
+  const newName = req.body.name;
+
+  //procura com o email e atualiza os dados
+  User.findOneAndUpdate(
+    { email: userEmail },
+    {
+      $set: {
+        name: newName,
+        password: newPassword,
+        email: newEmail,
+        address: newAddress,
+        phone: newPhone,
+      },
+    }
+  )
+    .then((updatedUser) => {
+      if (updatedUser) {
+        //caso tenha encontrado o usuario
+        console.log("Dados do usuário atualizados:", updatedUser);
+        res
+          .status(200)
+          .json({ message: "Dados do usuário atualizados com sucesso." });
+      } else {
+        //caso nao tenha encontrado o usuario
+        console.log("Nenhum usuário encontrado com o email fornecido.");
+        res
+          .status(404)
+          .json({ error: "Nenhum usuário encontrado com o email fornecido." });
+      }
+    })
+    .catch((error) => {
+      console.error("Ocorreu um erro ao atualizar os dados do usuário:", error);
+      res
+        .status(500)
+        .json({ error: "Ocorreu um erro ao atualizar os dados do usuário." });
+    });
+});
+
+//funcao para converter a imagem para base64 para poder salvar no banco
 const convertImageToBase64 = (imagePath) => {
   const imageBuffer = fs.readFileSync(imagePath);
   const base64Image = imageBuffer.toString("base64");
-  const contentType = "image/jpeg"; // Substitua pelo tipo de conteúdo correto da imagem
+  const contentType = "image/jpeg";
 
   return {
     data: base64Image,
@@ -203,12 +290,13 @@ const convertImageToBase64 = (imagePath) => {
   };
 };
 
+//adiciona um novo produto
 app.post("/addProduct", async (req, resp) => {
   try {
-    // Ler e converter a imagem em base64
+    //converte o caminho da imagem na imagem em base64
     const imageData = convertImageToBase64(req.body.imgSrc);
 
-    // Criar um novo objeto de produto com os dados e a imagem
+    //cria o novo produto com as informacoes passadas
     const newProduct = new Product({
       name: req.body.name,
       price: req.body.price,
@@ -218,9 +306,8 @@ app.post("/addProduct", async (req, resp) => {
       image: imageData,
     });
 
-    // Salvar o produto no banco de dados
+    //salvando o novo produto
     const savedProduct = await newProduct.save();
-    // translateImageToJpg(imageData.data,"teste.jpg")
 
     console.log("Produto inserido com sucesso:", savedProduct);
     resp.send(savedProduct);
@@ -229,30 +316,19 @@ app.post("/addProduct", async (req, resp) => {
   }
 });
 
-// const translateImageToJpg = (base64Data, outputPath) => {
-//   const base64Image = base64Data.replace(/^data:image\/jpeg;base64,/, "");
-//   const binaryData = Buffer.from(base64Image, "base64");
-
-//   fs.writeFile(outputPath, binaryData, "binary", (error) => {
-//     if (error) {
-//       console.error("Erro ao traduzir a imagem:", error);
-//     } else {
-//       console.log("Imagem traduzida com sucesso para JPG:", outputPath);
-//     }
-//   });
-// };
-
+//pegando produtos
 app.get("/getProduct", async (req, resp) => {
   try {
-    // Ler e converter a imagem em base64
-    const name = req.query.name; // Acessando o parâmetro email da solicitação GET
+    const name = req.query.name;
     let price = parseInt(req.query.price);
     const type = req.query.type;
-    let limit = 12;
+    let limit = 9;
 
+    //dependendo dos dados passados, muda os valores da pesquisa
     if (price > 0 || name != "" || type != "todos") limit = 102;
     if (price <= 0) price = 100000;
 
+    //regex do nome do produto
     const nameRegex = new RegExp(name, "i");
     const filter = {
       name: { $regex: nameRegex },
@@ -261,28 +337,25 @@ app.get("/getProduct", async (req, resp) => {
 
     if (type != "todos") filter["type"] = type;
 
-    // Criar um novo objeto de produto com os dados e a imagem
+    //procura os produtos de acordo com o filtro
     const products = await Product.find(filter).limit(limit);
     resp.send(products);
-    // console.log("Os 10 primeiros produtos:");
-    // products.forEach((product, index) => {
-    //   console.log(`Produto ${index + 1}:`, product.name);
-    // });
   } catch (error) {
     console.error("Erro ao obter os produtos:", error);
   }
 });
 
+//pega somente um produto de acordo com o id
 app.get("/getOneProduct", async (req, resp) => {
   try {
-    const idProduct = req.query.id; // Acessando o parâmetro email da solicitação GET
-    console.log(idProduct)
-    let product = await Product.findOne({ _id : idProduct }); // Passando o email como argumento para o construtor de User
+    const idProduct = req.query.id;
+
+    //procura o produto
+    let product = await Product.findOne({ _id: idProduct });
+
     if (product) {
-      // console.log(product);
       product = product.toObject();
-      resp.send(product); // Enviando o resultado da consulta como resposta
-      // console.log(product);
+      resp.send(product);
     } else {
       console.log("Produto Nao Encontrado");
       resp.send(JSON.stringify("Produto Nao Encontrado"));
@@ -293,22 +366,116 @@ app.get("/getOneProduct", async (req, resp) => {
   }
 });
 
+//deletar um produto
 app.delete("/deleteOneProduct", (req, res) => {
-  const idProduct = req.query.id; // Obtém o email do usuário a ser excluído da consulta
-  Product.findOneAndDelete({ _id : idProduct })
+  const idProduct = req.query.id;
+
+  //procura de acordo com o id e apaga se encontrar
+  Product.findOneAndDelete({ _id: idProduct })
     .then((deletedUser) => {
       if (deletedUser) {
         console.log("Produto excluído:", deletedUser);
         res.status(200).json({ message: "Produto excluído com sucesso." });
       } else {
         console.log("Nenhum Produto encontrado com o ID fornecido.");
-        res.status(404).json({ error: "Nenhum Produto encontrado com o ID fornecido." });
+        res
+          .status(404)
+          .json({ error: "Nenhum Produto encontrado com o ID fornecido." });
       }
     })
     .catch((error) => {
       console.error("Ocorreu um erro ao excluir o Produto:", error);
       res.status(500).json({ error: "Ocorreu um erro ao excluir o Produto." });
     });
+});
+
+//atualizar os dados de um produto
+app.put("/updateProduct", async (req, res) => {
+  const productID = req.query.id;
+  const newName = req.body.name;
+  const newPrice = req.body.price;
+  const newType = req.body.type;
+  const newDescription = req.body.description;
+
+  try {
+    let newImage = null;
+    //caso tenha uma atualizacao na imagem
+    if (req.body.imgSrc != "" || req.body.imgSrc == null) {
+      newImage = convertImageToBase64(req.body.imgSrc);
+    }
+
+    const newQuantity = req.body.quantity;
+
+    let result = null;
+    if (newImage != null) {
+      //caso precise atualizar a imagem
+      result = await Product.findOneAndUpdate(
+        { _id: productID },
+        {
+          $set: {
+            name: newName,
+            price: newPrice,
+            type: newType,
+            description: newDescription,
+            image: newImage,
+            quantity: newQuantity,
+          },
+        }
+      );
+    } else {
+      //caso nao precise atualizar a imagem
+      result = await Product.findOneAndUpdate(
+        { _id: productID },
+        {
+          $set: {
+            name: newName,
+            price: newPrice,
+            type: newType,
+            description: newDescription,
+            quantity: newQuantity,
+          },
+        }
+      );
+    }
+
+    if (result) {
+      console.log("Dados do produto atualizados:", result);
+      res
+        .status(200)
+        .json({ message: "Dados do produto atualizados com sucesso." });
+    } else {
+      console.log("Nenhum produto encontrado com o ID fornecido.");
+      res
+        .status(404)
+        .json({ message: "Nenhum produto encontrado com o ID fornecido." });
+    }
+  } catch (err) {
+    console.log("Erro ao atualizar o Produto", err);
+    res
+      .status(500)
+      .json({ message: "Erro ao atualizar o Produto, erro: " + err });
+  }
+});
+
+//adiciona uma nova venda
+app.post("/addSold", async (req, resp) => {
+  try {
+    //criando a nova venda com os dados passados
+    const newSold = new Sold({
+      userName: req.body.name,
+      userEmail: req.body.email,
+      totalPrice: req.body.totalPrice,
+      userAddres: req.body.address,
+      products: req.body.products,
+    });
+
+    //salvando no banco
+    const savedSold = await newSold.save();
+    resp.send(savedSold);
+  } catch (error) {
+    console.error("Erro ao inserir a venda:", error);
+    resp.send(null);
+  }
 });
 
 app.listen(5000);
