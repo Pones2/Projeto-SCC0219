@@ -36,7 +36,7 @@ const ShoppingCart = ({GlobalState}) => {
             updatedTotalPrice += product.price * count;
 
             return (
-                <>
+                <div className="productShoppingCart">
                     <CartProduct
                         key={productId}
                         product={product}
@@ -44,7 +44,7 @@ const ShoppingCart = ({GlobalState}) => {
                         GlobalState={GlobalState}
                     />
                     <Button onClick={() => deleteProduct(productId)}> Remover </Button>
-                </>
+                </div>
             );
         });
         setCartItems(newCartItems);

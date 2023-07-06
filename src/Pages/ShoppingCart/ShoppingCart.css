@@ -99,3 +99,33 @@
     background-color: rgb(177, 139, 211);
     
 }
+
+.productShoppingCart{
+
+    margin-top: 10vh;
+}
+
+.productShoppingCart button {
+    background-color: rgb(210, 165, 250);
+    color: #fff;
+    margin-top: 3vh;
+    height: 5vh;
+    border: none;
+    border-radius: 20px;
+    font-size: 2.5vh;
+    width: 300px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 3px 5px 4px #888888;
+    font-family: Verdana, sans-serif;
+
+    @media (max-width:800px) {
+        width: 25vw;
+    }
+
+}
+
+.productShoppingCart button:hover {
+    background-color: rgb(177, 139, 211);
+    
+}
