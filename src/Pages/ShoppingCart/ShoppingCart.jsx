@@ -36,17 +36,59 @@ const ShoppingCart = ({GlobalState}) => {
             updatedTotalPrice += product.price * count;
 
             return (
-                <CartProduct
-                    key={productId}
-                    product={product}
-                    count={count}
-                    GlobalState={GlobalState}
-                />
+                <>
+                    <CartProduct
+                        key={productId}
+                        product={product}
+                        count={count}
+                        GlobalState={GlobalState}
+                    />
+                    <Button onClick={() => deleteProduct(productId)}> Remover </Button>
+                </>
             );
         });
         setCartItems(newCartItems);
         setTotalPrice(updatedTotalPrice);
     }, [GlobalState, cart]);
+
+    const deleteProduct = (productId) => {
+        const newCart = cart.filter((product) => product.id !== productId);
+
+        setCart(newCart);
+
+        const countProducts = () => {
+            const counts = {};
+            newCart.forEach((product) => {
+                counts[product.id] = (counts[product.id] || 0) + 1;
+            });
+            return counts;
+        };
+    
+        const productCounts = countProducts();
+
+        let updatedTotalPrice = 0;
+    
+        const newCartItems = Object.keys(productCounts).map((productId) => {
+            const product = newCart.find((item) => item.id === productId);
+            const count = productCounts[productId];
+            updatedTotalPrice += product.price * count;
+
+            return (
+                <>
+                    <CartProduct
+                        key={productId}
+                        product={product}
+                        count={count}
+                        GlobalState={GlobalState}
+                    />
+                    <Button onClick={() => deleteProduct(productId)}> Remover </Button>
+                </>
+            );
+        });
+        
+        setCartItems(newCartItems);
+        setTotalPrice(updatedTotalPrice);
+    }
 
     const handlePaying = () => {
         if (cart.length === 0) {
@@ -64,10 +106,6 @@ const ShoppingCart = ({GlobalState}) => {
     {
         return value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     }
-
-
-
-
 
     return (
         <>

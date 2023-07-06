@@ -24,6 +24,9 @@ const SingleProduct = ({GlobalState}) => {
     const [imgSrc, setImgSrc] = useState("");
     const [quantity, setQuantity] = useState(0);
 
+    const [cartQuantity, setCartQuantity] = useState(0);
+    const [updatedCartQuantity, setUpdatedCartQuantity] = useState(0);
+
     // updated product variables
     const [updatedName, setUpdatedName] = useState("");
     const [updatedPrice, setUpdatedPrice] = useState(0);
@@ -54,6 +57,16 @@ const SingleProduct = ({GlobalState}) => {
                 setDescription(product.description);
                 setImgSrc(product.imgSrc);
                 setQuantity(product.quantity);
+
+                // doesnt reset the amount of products in the cart
+                const counts = {};
+                cart.forEach((product) => {
+                    counts[product.id] = (counts[product.id] || 0) + 1;
+                });
+                if(counts[id] !== undefined)
+                    setUpdatedCartQuantity(counts[id]);
+                else
+                    setUpdatedCartQuantity(0);
             })
             .catch(error => {
                 window.alert("Erro ao carregar o produto. Erro = " + error)
@@ -81,14 +94,30 @@ const SingleProduct = ({GlobalState}) => {
             return counts;
         };
 
+        let tempCartQuantity = cartQuantity;
+
+        if(cartQuantity === 0)
+        {
+            tempCartQuantity = 1;
+            setCartQuantity(1);
+        }
+
         // if there are more products with the same id than the quantity available
-        if(countProducts()[id] >= quantity)
+        if(countProducts()[id] + tempCartQuantity > quantity)
         {
             window.alert("Não há mais produtos disponíveis");
             return;
         }
 
-        setCart([...cart, product]);
+        const updatedCart = [...cart];
+        
+        for (let i = 0; i < tempCartQuantity; i++) {
+          updatedCart.push(product);
+        }
+        
+        setUpdatedQuantity(quantity - tempCartQuantity);
+        setUpdatedCartQuantity(updatedCartQuantity + tempCartQuantity);
+        setCart(updatedCart);
     }
 
     // form changes 
@@ -139,7 +168,18 @@ const SingleProduct = ({GlobalState}) => {
         setUpdatedQuantity(event.target.value);
     }
 
+    const handleCartQuantityChange = (event) => {
+        setCartQuantity(parseInt(event.target.value, 10));
+    };      
 
+    const generateNumOfProducts = (n) => {
+        const options = [];
+        for(let i = 1; i <= n; i++)
+        {
+            options.push(<option value={i}> {i} </option>);
+        }
+        return options;
+    }
 
     // converts to brl currency
     function toCurrency(value)
@@ -162,7 +202,14 @@ const SingleProduct = ({GlobalState}) => {
                             <div id="productInfoValuesPrice">
                                 <h1 id="productInfoName"> {name} </h1>
                                 <p> Quantidade: {quantity} </p>
+                                <p> No Carrinho: {updatedCartQuantity}</p>
                                 <h3> {type} </h3>
+                            </div>
+                            <div id="numberOfProductsDropdown">
+                                <h2> Quantidade: </h2>
+                                <select id="numberOfProducts" onChange={handleCartQuantityChange} value={cartQuantity}>
+                                    {generateNumOfProducts(quantity)}
+                                </select>
                             </div>
                             <div id="productInfoValuesButton">
                                 <h2 id="productInfoPrice"> {toCurrency(price)} </h2>
@@ -194,7 +241,14 @@ const SingleProduct = ({GlobalState}) => {
                             <div id="productInfoValuesPrice">
                                 <h1 id="productInfoName"> {name} </h1>
                                 <p> Quantidade: {quantity} </p>
+                                <p> No Carrinho: {updatedCartQuantity}</p>
                                 <h3> {type} </h3>
+                            </div>
+                            <div id="numberOfProductsDropdown">
+                                <h2> Quantidade: </h2>
+                                <select id="numberOfProducts" onChange={handleCartQuantityChange} value={cartQuantity}>
+                                    {generateNumOfProducts(quantity)}
+                                </select>
                             </div>
                             <div id="productInfoValuesButton">
                                 <h2 id="productInfoPrice"> {toCurrency(price)} </h2>

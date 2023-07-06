@@ -17,6 +17,7 @@ import Account from './Pages/Account/Account';
 import EditAccount from './Pages/EditAccount/EditAccount';
 import AddProduct from './Pages/AddProduct/AddProduct';
 import Users from './Pages/Users/Users';
+import ReadContact from './Pages/ReadContact/ReadContact';
 
 const App = () => {
   // global variables
@@ -103,6 +104,11 @@ const App = () => {
       <Route path="/editarusuarios" element = {
         <>
           <Users GlobalState={GlobalState}/>
+        </>
+      }/>
+      <Route path="/visualizarcontato" element = {
+        <>
+          <ReadContact/>
         </>
       }/>
       <Route path="*" element = {
