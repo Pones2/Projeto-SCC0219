@@ -37,9 +37,9 @@ const SingleProduct = ({GlobalState}) => {
 
     const { id } = useParams();
 
-    useEffect(async () => {
+    useEffect(() => {
         // fetch data
-        let result = await fetch(
+        let result = async () => await fetch(
           `http://localhost:5000/getOneProduct?id=${encodeURIComponent(id)}`, {
                 headers: {
                     method: "get",
@@ -50,7 +50,7 @@ const SingleProduct = ({GlobalState}) => {
             .then(response => response.json())
             .then((data) => {
                 // finds the product with the id passed in the url
-                const product = data.find((product) => product.id === id);
+                const product = data;
 
                 setName(product.name);
                 setPrice(product.price);
@@ -72,6 +72,7 @@ const SingleProduct = ({GlobalState}) => {
             .catch(error => {
                 window.alert("Erro ao carregar o produto. Erro = " + error)
             });
+            result();
     }, []);
 
     const addToCart = () => {
