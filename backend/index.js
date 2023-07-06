@@ -524,19 +524,20 @@ app.post("/addContact", async (req, resp) => {
 //carrega as mensagens para o frontend
 app.get("/getContact", async (req, resp) => {
   try {
-    const quantity = req.query.quantity;
+    let quantity = req.query.quantity;
 
     if (!quantity) {
       quantity = 1000;
     }
 
     //pega as mensagens
-    const contacts = await Product.find().limit(quantity);
+    const contacts = await Contact.find().limit(quantity);
+    console.log(contacts);
 
     if (contacts) {
       resp.send(contacts);
     } else {
-      resp.send("Nenhuma mensagem encontrda!");
+      resp.send("Nenhuma mensagem encontrada!");
     }
   } catch (error) {
     console.error("Erro ao obter as mensagens de contato:", error);
