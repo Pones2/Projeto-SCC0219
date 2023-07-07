@@ -162,7 +162,7 @@ const Paying = ({ GlobalState }) => {
           );
           result = await result.json();
           console.log(result);
-          alert(result.message);
+          //alert(result.message);
         }
       } else {
         alert("Erro ao realizar Compra");
