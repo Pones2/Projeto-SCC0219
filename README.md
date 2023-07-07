@@ -5,7 +5,6 @@ Projeto para a Disciplinha SCC0219 - Introdução ao Desenvolvimento Web<br>
 <h3>Integrantes : <br></h3>
 Felipe Seiji Momma Valente - 12543700<br>
 Rodrigo de Freitas Lima - 12547510 <br>
-Pedro Liduino do Nascimento - 11796847 <br>
 <br>
 
 <h2>Parte 1: Mockup da loja</h2>
